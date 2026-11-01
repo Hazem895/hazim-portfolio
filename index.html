@@ -225,6 +225,32 @@ button,a,[role="button"]{-webkit-tap-highlight-color:rgba(200,121,44,.18);touch-
  .education-tags{gap:6px}
  .education-tags span{font-size:11px;padding:7px 9px}
 }
+
+/* Touch devices: instant, stable accordion content without sliding or blur */
+@media(max-width:800px),(pointer:coarse){
+ .company-detail,.company-detail .detail-content,.company-row>.choice,.company-detail.is-entering,.company-detail.is-visible{
+  transition:none!important;animation:none!important;filter:none!important;transform:none!important;
+ }
+ .company-detail .detail-ghost{display:none!important}
+ .company-row>.choice:hover,.company-row>.choice.active{transform:none!important}
+}
+@media(max-width:620px){
+ /* Graduation as a clean, compact credential card */
+ .education-card{display:block!important;border:1px solid rgba(244,217,160,.25);border-radius:16px;background:#241b15;box-shadow:none;overflow:hidden}
+ .education-year{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important;padding:15px 18px!important;background:#36271c;border:0!important;border-bottom:1px solid rgba(244,217,160,.18)!important}
+ .education-year strong{order:0;font-size:32px!important;line-height:1.1;letter-spacing:-1px}
+ .education-year-label{font-size:10px!important;letter-spacing:.06em;white-space:nowrap}
+ .education-year-label:first-child{order:-1;color:#d3b89b}
+ .education-year-label:last-child{margin-left:auto;color:#d3b89b}
+ .education-info{display:block!important;padding:20px 18px!important}
+ .education-kicker{display:block;font-size:10px;margin-bottom:9px;letter-spacing:.12em}
+ .education-info h3{font-size:clamp(22px,6vw,27px)!important;line-height:1.22!important;letter-spacing:-.02em;margin:0 0 8px!important}
+ .education-university{font-size:16px!important;margin:0 0 12px!important}
+ .education-desc{font-size:13px!important;line-height:1.6!important;margin:0 0 15px!important}
+ .education-tags{gap:7px}
+ .education-tags span{font-size:10px!important;padding:7px 9px!important}
+ .education-card:hover{transform:none!important;box-shadow:none!important}
+}
 </style></head><body><canvas id="particles"></canvas><div class="glow" id="glow"></div><header><div class="wrap nav"><div class="brand">HA<span>.</span> / ENGINEERING</div><nav id="mainNav" aria-label="Main navigation"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#challenges">Challenges</a><a href="#education">Education</a><a href="#contact">Contact</a></nav><button class="mobile-menu" id="menuToggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation">☰</button><a class="btn" href="#contact">Let's talk ↗</a></div></header><main class="wrap"><div class="hero"><div><div class="eyebrow">Senior Software Engineer · Full-Stack Development · System Design · Cloud & Integrations</div><h1>I build<br><em>what scales.</em></h1><p>I'm Hazim Attia. I am a Senior Software Engineer at Sure Global Tech, based in Egypt. I build software across frontend and backend — from interactive web applications to APIs, cloud integrations, and reliable distributed workflows. I also created HForge, a reusable .NET engineering toolkit.</p><div class="actions"><a class="btn primary" href="#experience">Explore my experience ↓</a><a class="btn" id="resumeDownload" href="Hazim%20Attia%20-%20Senior%20Software%20Engineer.pdf" download="Hazim Attia - Senior Software Engineer.pdf">Download resume ↓</a></div><div class="scrollhint">↓ Scroll to explore the engineering story</div></div><div class="terminal"><div class="termbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><small>hazim@portfolio: ~</small></div><div class="termcontent"><div><span class="prompt">$</span> <span id="typed" class="cmd"></span><span class="blink">▌</span></div><div id="terminalOutput"></div></div></div></div>
 <section class="reveal"><div class="eyebrow">01 / At a glance</div><h2>Engineering with ownership.</h2><p class="muted">Based in Egypt. Electrical & Electronics Engineering graduate from Menoufia University. Over five years building end-to-end software, spanning user interfaces, APIs, integrations, cloud services and system design.</p><div class="stats"><div class="stat"><strong>5+</strong><small>Years of experience (approx.)</small></div><div class="stat"><strong>4+</strong><small>Industries I’ve built software for<br><span class="industry-list">Logistics · FinTech · Healthcare · Business Communications</span></small></div><div class="stat"><strong>∞</strong><small>Curiosity about better system design</small></div></div></section>
 <section id="experience" class="reveal"><div class="eyebrow">02 / Professional experience</div><h2>Four companies. One evolving craft.</h2><p class="muted">Explore each role and the engineering responsibilities behind it.</p><div class="company-accordion" id="companyChoices"><div class="company-row"><button class="choice active" data-company="0" type="button">Sure Global Tech · 2025–Now</button></div><div class="company-row"><button class="choice" data-company="1" type="button">Transflo · 2023–2024</button></div><div class="company-row"><button class="choice" data-company="2" type="button">Azentio · 2022–2023</button></div><div class="company-row"><button class="choice" data-company="3" type="button">Shadi Systems · 2020–2022</button></div></div></section><section id="projects" class="reveal"><div class="eyebrow">03 / Selected projects</div><h2>Systems I've helped build.</h2><p class="muted">Click a project to open its full case study in a popup.</p><div class="challenge-grid"><button class="challenge" data-project="0"><div class="symbol">◎</div><h3>WhatsApp Portal</h3><p>Messaging and Meta Cloud API</p></button><button class="challenge" data-project="1"><div class="symbol">↗</div><h3>Transflo Wallet</h3><p>Serverless logistics APIs</p></button><button class="challenge" data-project="2"><div class="symbol">◇</div><h3>Securitization</h3><p>Financial microservices</p></button><button class="challenge" data-project="3"><div class="symbol">▤</div><h3>Egyptian e-Invoice</h3><p>Tax authority integration</p></button></div></section><section id="challenges" class="reveal"><div class="eyebrow">04 / Engineering philosophy</div><h2>Engineering is more than completing tickets.</h2><p class="muted">My engineering philosophy: solve the problem, then simplify the work around it. Explore how I approach integrations, performance, reusable systems, and everyday automation.</p><div class="challenge-grid"><button class="challenge" data-challenge="0"><div class="symbol">↗</div><h3>Complex Integrations</h3><p>How do you own a WhatsApp integration end to end?</p></button><button class="challenge" data-challenge="1"><div class="symbol">◷</div><h3>Slow Requests</h3><p>What happens when an Excel import takes too long?</p></button><button class="challenge" data-challenge="2"><div class="symbol">◇</div><h3>Maintainable Systems</h3><p>How do you design components for reuse and growth?</p></button><button class="challenge" data-challenge="3"><div class="symbol">⚙</div><h3>Automating Routine Work</h3><p>Why repeat a manual task when code can make it simpler?</p></button></div><div id="challengeResult" class="result philosophy-result" aria-live="polite"></div></section>
@@ -284,7 +310,15 @@ function showCompany(i){
  document.querySelectorAll('[data-company]').forEach((b,j)=>{b.classList.toggle('active',i===j);b.setAttribute('aria-expanded',String(i===j));});
  const c=companies[i];
  placeCompanyPanel(i);
- smoothSwap(companyPanel,'<div class="eyebrow">'+c.dates+'</div><h3>'+c.name+'</h3><strong>'+c.role+'</strong><p>'+c.description+'</p>'+tags(c.stack),target);
+ const markup='<div class="eyebrow">'+c.dates+'</div><h3>'+c.name+'</h3><strong>'+c.role+'</strong><p>'+c.description+'</p>'+tags(c.stack);
+ if(matchMedia('(max-width:800px), (pointer:coarse)').matches){
+  const previous=smoothState.get(companyPanel);if(previous)previous.cancel();
+  companyPanel.classList.remove('is-entering');companyPanel.classList.add('is-visible');
+  companyPanel.querySelectorAll('.detail-ghost').forEach(el=>el.remove());
+  const content=companyPanel.querySelector('.detail-content');
+  content.getAnimations().forEach(a=>a.cancel());
+  content.innerHTML=markup;
+ }else smoothSwap(companyPanel,markup,target);
  selectedCompany=i;
 }
 document.querySelectorAll('[data-company]').forEach(b=>b.onclick=()=>showCompany(+b.dataset.company));showCompany(0);
