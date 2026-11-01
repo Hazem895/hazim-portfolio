@@ -1,0 +1,238 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hazim Attia — Interactive Engineering Portfolio</title>
+<style>
+:root{--brown:#5B4632;--cream:#F4D9A0;--gold:#C8792C;--bg:#110f0d;--panel:#201a15;--line:#564331;--text:#f8e9d2}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,Arial;overflow-x:hidden}button,a{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}#particles{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.6}.glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,#c8792c1d,transparent 65%);transform:translate(-50%,-50%)}.wrap{position:relative;z-index:1;max-width:1200px;margin:auto;padding:0 28px}header{position:sticky;top:0;z-index:10;background:#110f0de9;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff16}.nav{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:16px}.brand{font-weight:850;letter-spacing:-1px}.brand span{color:var(--gold)}nav{display:flex;gap:24px;font-size:13px;color:#d5c4ae}nav a:hover{color:var(--gold)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid #8e6a48;padding:13px 20px;border-radius:11px;background:#2b221b;color:var(--text);transition:transform .2s,background .2s,box-shadow .2s}.btn:hover{transform:translateY(-4px);background:#453021;box-shadow:0 12px 35px #0008}.btn.primary{background:var(--gold);color:#180e08;font-weight:800;border-color:var(--gold)}.hero{min-height:83vh;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:30px;padding-top:65px;padding-bottom:65px}.eyebrow{font-size:12px;letter-spacing:3px;color:#d4a06b;font-weight:800;text-transform:uppercase}.hero h1{font-size:clamp(54px,7vw,104px);line-height:.97;letter-spacing:-5px;margin:22px 0}.hero h1 em{font-style:normal;color:var(--gold)}.hero p{max-width:610px;color:#cdbda9;font-size:18px;line-height:1.7}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.terminal{border:1px solid #88644080;background:#1d1815e8;border-radius:18px;box-shadow:0 25px 90px #000a;overflow:hidden;transform:perspective(950px) rotateY(-7deg) rotateX(3deg);transition:transform .35s}.terminal:hover{transform:perspective(950px) rotateY(0) rotateX(0)}.termbar{background:#30251e;padding:13px 17px;display:flex;gap:7px;align-items:center;border-bottom:1px solid #5c4637}.dot{height:9px;width:9px;border-radius:50%;background:#d66d55}.dot:nth-child(2){background:#e8bc5d}.dot:nth-child(3){background:#77a87c}.termbar small{margin-left:auto;color:#b4a18d}.termcontent{padding:25px;font:14px/2 'SFMono-Regular',Consolas,monospace;min-height:320px}.prompt{color:#d8a366}.cmd{color:#e8dbca}.out{color:#8ec6a0}.blink{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}section{padding:85px 0;border-top:1px solid #ffffff13}h2{font-size:clamp(34px,4.5vw,58px);letter-spacing:-2px;margin:12px 0 15px}.muted{color:#baa995;line-height:1.7;max-width:700px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:38px}.stat{padding:22px;border:1px solid #70523b;background:#231c17;border-radius:16px}.stat strong{font-size:32px;color:var(--gold);display:block}.stat small{color:#baa995}.challenge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}.challenge{border:1px solid #72553b;background:linear-gradient(150deg,#2b2119,#1b1714);border-radius:17px;padding:24px;text-align:left;color:inherit;min-height:200px;transition:.25s}.challenge:hover,.challenge.active{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 15px 45px #0008}.challenge .symbol{font-size:30px;color:var(--gold)}.challenge h3{margin:18px 0 8px;font-size:20px}.challenge p{color:#c2af99;font-size:14px;line-height:1.5}.result{margin-top:18px;padding:27px;background:#2a2019;border:1px solid #a16e43;border-radius:18px;min-height:190px;animation:rise .3s ease}.result h3{margin:0;color:#f4d9a0}.result p{color:#d4c2ad;line-height:1.7}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{border:1px solid #77573c;border-radius:100px;padding:6px 12px;font-size:12px;color:#e9bc87}.diagram{position:relative;margin-top:35px;border:1px solid #74553d;border-radius:20px;background:radial-gradient(circle at 50% 50%,#36261b,#181411 65%);min-height:420px;overflow:hidden;padding:25px}.diagram svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.diagram path{stroke:#c8792c;stroke-width:2;fill:none;stroke-dasharray:8 8;animation:dash 12s linear infinite}@keyframes dash{to{stroke-dashoffset:-240}}.node{position:absolute;transform:translate(-50%,-50%);background:#30251d;border:1px solid #bd8756;border-radius:12px;padding:16px 19px;min-width:128px;text-align:center;font-size:14px;box-shadow:0 8px 30px #0008;transition:.2s;color:var(--text)}.node:hover,.node.selected{background:#9a5b28;color:white;scale:1.06}.node small{display:block;color:#e5bc93;font-size:11px;margin-top:4px}.node.selected small{color:#fff}.nodeinfo{margin-top:14px;color:#d7c0a6;min-height:46px}.timeline{margin-top:35px;display:grid;grid-template-columns:1fr 2fr;gap:24px}.choices{display:flex;flex-direction:column;gap:10px}.choice{background:#211a15;border:1px solid #624b36;color:#ddc9b3;padding:18px;text-align:left;border-radius:12px;transition:.2s}.choice.active,.choice:hover{background:#573821;border-color:var(--gold)}.story{padding:30px;border:1px solid #7a593e;border-radius:17px;background:#211a15;min-height:275px}.story h3{font-size:29px;margin:10px 0}.story p{line-height:1.8;color:#d2bfa8}.skillset{display:flex;gap:11px;flex-wrap:wrap;margin-top:28px}.skill{padding:13px 18px;background:#2a2019;border:1px solid #705039;border-radius:10px;transition:.25s}.skill:hover{background:#c8792c;color:#130d09;transform:rotate(-3deg) scale(1.07)}.contact{border:1px solid #97643d;background:linear-gradient(130deg,#382719,#201915);border-radius:24px;padding:45px}.contact p{color:#d4c1aa}footer{padding:35px 0;color:#a58d75;font-size:12px}.reveal{opacity:0;transform:translateY(45px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:translateY(0)}.scrollhint{color:#c4a486;font-size:12px;margin-top:35px;animation:bob 2s infinite}@keyframes bob{50%{transform:translateY(8px)}}@keyframes rise{from{opacity:.3;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@media(max-width:800px){nav{display:none}.hero{grid-template-columns:1fr;padding-top:45px}.hero h1{letter-spacing:-3px}.terminal{transform:none}.stats,.challenge-grid{grid-template-columns:1fr}.timeline{grid-template-columns:1fr}.diagram{min-height:370px}.node{min-width:95px;padding:11px 7px;font-size:12px}.contact{padding:25px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}@media print{header,#particles,.glow,.actions,.scrollhint,.diagram{display:none!important}body{background:white;color:black}.reveal{opacity:1;transform:none}section{padding:20px 0}.hero{min-height:auto}.terminal{display:none}.story,.result,.stat{color:black;background:white;border:1px solid #aaa}.muted,.story p,.result p{color:#333}}
+
+/* V5 interactions */
+.choice{position:relative;overflow:hidden}.choice::after{content:'↗';position:absolute;right:16px;opacity:0;transform:translateX(-8px);transition:.3s}.choice:hover::after,.choice.active::after{opacity:1;transform:none}.choice.active{box-shadow:inset 4px 0 var(--gold),0 12px 34px #0005}.challenge[data-project]{position:relative;overflow:hidden}.challenge[data-project]::after{content:'Explore case study ↗';display:block;color:var(--cream);font-size:12px;margin-top:18px;opacity:.7}.challenge[data-project]:hover::after{opacity:1}.story.swap,.result.swap{animation:detailSwap .48s cubic-bezier(.2,.8,.2,1)}@keyframes detailSwap{from{opacity:0;transform:translateY(18px) scale(.97);filter:blur(5px)}to{opacity:1;transform:none;filter:blur(0)}}
+.project-modal{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:20px;background:#0b0908d9;backdrop-filter:blur(13px);opacity:0;visibility:hidden;transition:opacity .28s,visibility .28s}.project-modal.open{opacity:1;visibility:visible}.modal-panel{width:min(760px,100%);max-height:min(86vh,850px);overflow:auto;position:relative;border-radius:25px;border:1px solid #b47b48;background:linear-gradient(145deg,#34251b,#171310 70%);box-shadow:0 35px 130px #000e;transform:translateY(45px) scale(.93);transition:transform .45s cubic-bezier(.16,1,.3,1);padding:clamp(24px,5vw,45px)}.project-modal.open .modal-panel{transform:none}.modal-close{position:absolute;top:16px;right:16px;border:1px solid #886344;border-radius:50%;width:38px;height:38px;background:#4b3525;color:white;font-size:22px}.modal-head{padding-right:35px}.modal-head h2{font-size:clamp(30px,5vw,48px);margin:12px 0}.modal-summary{font-size:16px;line-height:1.8;color:#e0cbb5}.modal-flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:26px 0;padding:20px;border:1px solid #7c583b;border-radius:16px;background:#1a1512}.flow-node{padding:11px 13px;border:1px solid #a77549;border-radius:10px;color:#f4d9a0;background:#39271b;animation:pop .5s both}.flow-arrow{color:#ce8c50;animation:pulse 1.8s infinite}@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.9)}to{opacity:1;transform:none}}@keyframes pulse{50%{opacity:.3}}.modal-section{margin-top:24px}.modal-section h3{font-size:15px;color:#d79a61;text-transform:uppercase;letter-spacing:2px}.modal-section p{color:#d7c2ac;line-height:1.8}.modal-footer{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:28px;flex-wrap:wrap}.modal-counter{font:12px monospace;color:#bca58d}body.modal-open{overflow:hidden}@media(prefers-reduced-motion:reduce){.project-modal,.modal-panel,.story.swap,.result.swap,.flow-node{animation:none!important;transition:none!important}}
+
+/* Balanced two-column experience selector */
+.company-accordion{display:grid;grid-template-columns:minmax(240px,32%) minmax(0,1fr);grid-template-rows:repeat(4,minmax(92px,1fr));gap:12px 20px;margin-top:32px;position:relative;isolation:isolate}
+.company-row{display:contents}
+.company-row:nth-child(1)>.choice{grid-row:1}.company-row:nth-child(2)>.choice{grid-row:2}.company-row:nth-child(3)>.choice{grid-row:3}.company-row:nth-child(4)>.choice{grid-row:4}
+.company-row>.choice{grid-column:1;width:100%;min-height:75px;border-radius:14px;position:relative;z-index:2;transition:background .42s cubic-bezier(.2,.8,.2,1),border-color .42s,transform .42s cubic-bezier(.2,.8,.2,1),box-shadow .42s}
+.company-row>.choice:hover{transform:translateX(5px)}
+.company-row>.choice.active{background:linear-gradient(110deg,#724725,#39291c);border-color:var(--gold);box-shadow:0 9px 26px #0004;transform:translateX(4px)}
+.company-detail{grid-column:2;grid-row:1 / 5;min-height:100%;height:100%;align-self:stretch;position:relative;overflow:hidden;z-index:1;transform-origin:left var(--origin-y,12%);transition:opacity .52s cubic-bezier(.2,.8,.2,1),transform .78s cubic-bezier(.16,1,.3,1),filter .65s cubic-bezier(.16,1,.3,1);box-shadow:0 18px 60px #0007}
+.company-detail::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold)}
+.company-detail.is-entering{opacity:0;transform:translateX(-28px) scale(.91);filter:blur(5px)}
+.company-detail.is-visible{opacity:1;transform:translateX(0) scale(1);filter:blur(0)}
+.company-detail .detail-content{transition:opacity .24s ease,transform .38s cubic-bezier(.2,.8,.2,1)}
+.company-detail .detail-content.is-changing{opacity:0;transform:translateY(9px)}
+@media(max-width:700px){.company-accordion{display:flex;flex-direction:column;gap:12px}.company-row{display:contents}.company-row>.choice{min-height:66px}.company-detail{height:auto;min-height:280px;transform-origin:top center;order:5}.company-detail.is-entering{transform:translateY(-15px) scale(.97)}}
+@media(prefers-reduced-motion:reduce){.company-detail,.company-detail .detail-content,.company-row>.choice{transition:none!important}}
+
+/* V8 polish and usability */
+:root{color-scheme:dark}section[id]{scroll-margin-top:95px}
+:focus-visible{outline:3px solid #f4d9a0;outline-offset:4px}
+.mobile-menu{display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;border:1px solid #896444;background:#302219;color:#f4d9a0;font-size:22px}
+.company-accordion{align-items:stretch}
+.company-detail{display:flex;align-items:center;padding:clamp(22px,3vw,38px)}
+.company-detail .detail-content{width:100%;max-width:740px}
+.company-detail h3{font-size:clamp(25px,3vw,37px);letter-spacing:-.8px}
+.company-detail p{font-size:clamp(14px,1.4vw,16px);line-height:1.75}
+.company-row>.choice{display:flex;align-items:center;font-weight:650;font-size:clamp(13px,1.3vw,16px);line-height:1.45;padding:18px 22px}
+.challenge-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.challenge[data-project]{min-height:235px;display:flex;flex-direction:column;justify-content:flex-start}
+.challenge[data-project]::after{margin-top:auto;padding-top:22px}
+.modal-panel{scrollbar-width:thin;scrollbar-color:#8f633e #231910}
+.modal-panel:focus{outline:none}
+.modal-close:hover{background:#9b602d}
+.btn:active,.choice:active,.challenge:active{transform:scale(.98)}
+@media(max-width:1000px){.challenge-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.company-accordion{grid-template-columns:minmax(205px,34%) minmax(0,1fr)}}
+@media(max-width:800px){
+ .mobile-menu{display:inline-flex}
+ header .nav{position:relative}
+ nav#mainNav{display:none;position:absolute;top:calc(100% - 1px);left:0;right:0;flex-direction:column;gap:0;padding:12px;background:#201813;border:1px solid #6c4a31;border-radius:0 0 16px 16px;box-shadow:0 20px 40px #0009}
+ nav#mainNav.nav-open{display:flex}
+ nav#mainNav a{padding:13px 14px;border-radius:9px}
+ nav#mainNav a:hover{background:#3c291b}
+ .hero{min-height:auto}
+}
+@media(max-width:700px){
+ .company-accordion{display:flex;flex-direction:column;gap:10px}
+ .company-row>.choice{min-height:64px}
+ .company-detail{min-height:300px;padding:25px}
+ .challenge-grid{grid-template-columns:1fr 1fr}
+ .challenge[data-project]{min-height:205px}
+ .modal-panel{max-height:92dvh}
+}
+@media(max-width:480px){.wrap{padding-left:18px;padding-right:18px}.hero h1{font-size:clamp(49px,14vw,70px)}.challenge-grid{grid-template-columns:1fr}.challenge[data-project]{min-height:160px}.stats{grid-template-columns:1fr}.contact{padding:24px}.modal-footer{justify-content:center}.modal-counter{width:100%;text-align:center;order:-1}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.company-detail.is-entering{opacity:1;filter:none;transform:none}.project-modal.open .modal-panel{transform:none}}
+@media print{.mobile-menu,.project-modal{display:none!important}.company-detail{height:auto!important;min-height:auto!important}.company-accordion{display:block!important}.company-row{display:none!important}.company-detail{display:block!important}section{break-inside:avoid}.challenge-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* Unified motion language: one duration, one easing, one travel distance. */
+:root{--motion-duration:650ms;--motion-ease:cubic-bezier(.16,1,.3,1);--motion-distance:12px}
+.btn,.terminal,.challenge,.node,.choice,.skill,.company-row>.choice,.company-detail,.company-detail .detail-content,.project-modal,.modal-panel,.reveal,.choice::after{
+ transition-duration:var(--motion-duration)!important;
+ transition-timing-function:var(--motion-ease)!important;
+}
+.reveal{transform:translateY(var(--motion-distance))}
+.challenge:hover,.challenge.active{transform:translateY(calc(var(--motion-distance) * -.45))}
+.project-modal.open .modal-panel{transform:translateY(0) scale(1)}
+.modal-panel{transform:translateY(var(--motion-distance)) scale(.98)}
+.company-detail{transition-duration:var(--motion-duration)!important}
+.company-detail .detail-content{transition-duration:var(--motion-duration)!important}
+.result.swap,.story.swap{animation:unified-enter var(--motion-duration) var(--motion-ease) both}
+@keyframes unified-enter{from{opacity:0;transform:translateY(var(--motion-distance));filter:blur(3px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes rise{from{opacity:0;transform:translateY(var(--motion-distance))}to{opacity:1;transform:translateY(0)}}
+@keyframes pop{from{opacity:0;transform:translateY(var(--motion-distance))}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){:root{--motion-duration:0ms;--motion-distance:0px}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:0ms!important;scroll-behavior:auto!important}}
+
+/* Responsibility selector uses the exact experience layout and animation. */
+.responsibility-accordion{margin-top:35px}
+.responsibility-accordion .company-row>.choice{height:100%}
+.responsibility-accordion .company-detail{min-height:100%;height:100%}
+@media(max-width:700px){.responsibility-accordion .company-detail{height:auto;min-height:300px}}
+
+/* V11: fluid shared transitions */
+.company-detail{position:relative;overflow:hidden;isolation:isolate}
+.company-detail .detail-content,.company-detail .detail-ghost{width:100%;max-width:740px;will-change:opacity,transform,filter}
+.company-detail .detail-ghost{position:absolute;inset:0;padding:inherit;pointer-events:none;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center}
+.company-detail .detail-content{position:relative;z-index:1}
+.choice,.challenge,.btn{transition-property:transform,background-color,border-color,color,box-shadow,opacity!important}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.company-detail .detail-ghost{display:none}}
+
+/* Unified selected and hovered states for interactive cards */
+.challenge[data-project],.challenge[data-challenge]{border:1px solid rgba(244,217,160,.18);transition:transform 650ms cubic-bezier(.22,1,.36,1),border-color 650ms cubic-bezier(.22,1,.36,1),background 650ms cubic-bezier(.22,1,.36,1),box-shadow 650ms cubic-bezier(.22,1,.36,1)!important}
+.challenge[data-project]:is(:hover,:focus-visible,.active),.challenge[data-challenge]:is(:hover,:focus-visible,.active){border-color:#c8792c;background:linear-gradient(145deg,rgba(200,121,44,.19),rgba(91,70,50,.28));box-shadow:inset 0 0 0 1px rgba(244,217,160,.12),0 16px 42px rgba(0,0,0,.25);transform:translateY(-5px)}
+.challenge[data-project].active .symbol,.challenge[data-challenge].active .symbol{color:#f4d9a0}
+@media(prefers-reduced-motion:reduce){.challenge[data-project],.challenge[data-challenge]{transition-duration:0ms!important;transform:none!important}}
+
+/* Dedicated, high-contrast education section */
+.education-section{scroll-margin-top:100px}.education-card{display:grid;grid-template-columns:minmax(160px,25%) 1fr;gap:0;margin-top:30px;overflow:hidden;border:1px solid rgba(244,217,160,.25);border-radius:22px;background:linear-gradient(125deg,#302319,#1c1713);box-shadow:0 20px 55px rgba(0,0,0,.18);transition:transform 650ms cubic-bezier(.22,1,.36,1),border-color 650ms cubic-bezier(.22,1,.36,1),box-shadow 650ms cubic-bezier(.22,1,.36,1)}.education-card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 24px 60px rgba(0,0,0,.27)}.education-year{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:13px;padding:32px 20px;background:linear-gradient(145deg,#70482c,#443022);border-right:1px solid rgba(244,217,160,.2)}.education-year strong{font-size:clamp(52px,7vw,94px);font-weight:800;letter-spacing:-.08em;line-height:1;color:var(--cream)}.education-year-label,.education-kicker{font-size:11px;font-weight:750;letter-spacing:.2em;color:#f1c18d}.education-info{padding:clamp(25px,4vw,52px);display:flex;flex-direction:column;justify-content:center;gap:12px}.education-info h3{font-size:clamp(25px,3vw,38px);line-height:1.16;letter-spacing:-.04em;margin:0;color:#fff1d9}.education-university{font-size:clamp(18px,2vw,24px);font-weight:700;color:var(--cream);margin:0}.education-desc{line-height:1.75;color:#d4c4b1;max-width:680px;margin:4px 0 8px}.education-tags{display:flex;flex-wrap:wrap;gap:9px}.education-tags span{font-size:12px;border:1px solid rgba(244,217,160,.25);padding:8px 12px;border-radius:99px;color:#f4d9a0;background:rgba(200,121,44,.09)}@media(max-width:620px){.education-card{grid-template-columns:1fr}.education-year{flex-direction:row;gap:20px;padding:22px;border-right:0;border-bottom:1px solid rgba(244,217,160,.2)}.education-year strong{font-size:54px}.education-info{padding:26px 22px}}@media(prefers-reduced-motion:reduce){.education-card{transition:none}.education-card:hover{transform:none}}
+
+/* Philosophy: show details for the hovered/focused choice only. */
+.philosophy-result{min-height:0;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity 650ms cubic-bezier(.22,1,.36,1),transform 650ms cubic-bezier(.22,1,.36,1),visibility 650ms cubic-bezier(.22,1,.36,1)}
+.philosophy-result.visible-result{opacity:1;visibility:visible;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.philosophy-result{transition:none;transform:none}}
+#modalContent{will-change:transform,opacity,filter;transform:translateZ(0)}
+@media(prefers-reduced-motion:reduce){#modalContent{will-change:auto}}
+.industry-list{display:block;margin-top:8px;font-size:clamp(11px,1.05vw,13px);line-height:1.6;color:#e5cba8;font-weight:500}.stats .stat small{line-height:1.55}</style></head><body><canvas id="particles"></canvas><div class="glow" id="glow"></div><header><div class="wrap nav"><div class="brand">HA<span>.</span> / ENGINEERING</div><nav id="mainNav" aria-label="Main navigation"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#challenges">Challenges</a><a href="#education">Education</a><a href="#contact">Contact</a></nav><button class="mobile-menu" id="menuToggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation">☰</button><a class="btn" href="#contact">Let's talk ↗</a></div></header><main class="wrap"><div class="hero"><div><div class="eyebrow">Senior Software Engineer · Full-Stack Development · System Design · Cloud & Integrations</div><h1>I build<br><em>what scales.</em></h1><p>I'm Hazim Attia. I am a Senior Software Engineer at Sure Global Tech, based in Egypt. I build software across frontend and backend — from interactive web applications to APIs, cloud integrations, and reliable distributed workflows. I also created HForge, a reusable .NET engineering toolkit.</p><div class="actions"><a class="btn primary" href="#experience">Explore my experience ↓</a><a class="btn" href="Hazim_Attia_Resume.pdf" download>Download resume ↓</a></div><div class="scrollhint">↓ Scroll to explore the engineering story</div></div><div class="terminal"><div class="termbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><small>hazim@portfolio: ~</small></div><div class="termcontent"><div><span class="prompt">$</span> <span id="typed" class="cmd"></span><span class="blink">▌</span></div><div id="terminalOutput"></div></div></div></div>
+<section class="reveal"><div class="eyebrow">01 / At a glance</div><h2>Engineering with ownership.</h2><p class="muted">Based in Egypt. Electrical & Electronics Engineering graduate from Menoufia University. Over five years building end-to-end software, spanning user interfaces, APIs, integrations, cloud services and system design.</p><div class="stats"><div class="stat"><strong>5+</strong><small>Years of experience (approx.)</small></div><div class="stat"><strong>4+</strong><small>Industries I’ve built software for<br><span class="industry-list">Logistics · FinTech · Healthcare · Business Communications</span></small></div><div class="stat"><strong>∞</strong><small>Curiosity about better system design</small></div></div></section>
+<section id="experience" class="reveal"><div class="eyebrow">02 / Professional experience</div><h2>Four companies. One evolving craft.</h2><p class="muted">Explore each role and the engineering responsibilities behind it.</p><div class="company-accordion" id="companyChoices"><div class="company-row"><button class="choice active" data-company="0" type="button">Sure Global Tech · 2025–Now</button></div><div class="company-row"><button class="choice" data-company="1" type="button">Transflo · 2023–2024</button></div><div class="company-row"><button class="choice" data-company="2" type="button">Azentio · 2022–2023</button></div><div class="company-row"><button class="choice" data-company="3" type="button">Shadi Systems · 2020–2022</button></div></div></section><section id="projects" class="reveal"><div class="eyebrow">03 / Selected projects</div><h2>Systems I've helped build.</h2><p class="muted">Click a project to open its full case study in a popup.</p><div class="challenge-grid"><button class="challenge" data-project="0"><div class="symbol">◎</div><h3>WhatsApp Portal</h3><p>Messaging and Meta Cloud API</p></button><button class="challenge" data-project="1"><div class="symbol">↗</div><h3>Transflo Wallet</h3><p>Serverless logistics APIs</p></button><button class="challenge" data-project="2"><div class="symbol">◇</div><h3>Securitization</h3><p>Financial microservices</p></button><button class="challenge" data-project="3"><div class="symbol">▤</div><h3>Egyptian e-Invoice</h3><p>Tax authority integration</p></button></div></section><section id="challenges" class="reveal"><div class="eyebrow">04 / Engineering philosophy</div><h2>Engineering is more than completing tickets.</h2><p class="muted">My engineering philosophy: solve the problem, then simplify the work around it. Explore how I approach integrations, performance, reusable systems, and everyday automation.</p><div class="challenge-grid"><button class="challenge" data-challenge="0"><div class="symbol">↗</div><h3>Complex Integrations</h3><p>How do you own a WhatsApp integration end to end?</p></button><button class="challenge" data-challenge="1"><div class="symbol">◷</div><h3>Slow Requests</h3><p>What happens when an Excel import takes too long?</p></button><button class="challenge" data-challenge="2"><div class="symbol">◇</div><h3>Maintainable Systems</h3><p>How do you design components for reuse and growth?</p></button><button class="challenge" data-challenge="3"><div class="symbol">⚙</div><h3>Automating Routine Work</h3><p>Why repeat a manual task when code can make it simpler?</p></button></div><div id="challengeResult" class="result philosophy-result" aria-live="polite"></div></section>
+<section id="education" class="reveal education-section"><div class="eyebrow">05 / Education</div><h2>Engineering foundations.</h2><p class="muted">The academic foundation behind my approach to solving technical problems.</p><div class="education-card"><div class="education-year"><span class="education-year-label">GRADUATED</span><strong>2019</strong><span class="education-year-label">EGYPT</span></div><div class="education-info"><span class="education-kicker">BACHELOR'S DEGREE</span><h3>Electrical &amp; Computer Engineering</h3><p class="education-university">Menoufia University</p><p class="education-desc">A foundation in analytical thinking, systems, and engineering problem-solving — now applied to building reliable software products across frontend and backend.</p><div class="education-tags"><span>Engineering</span><span>Systems Thinking</span><span>Problem Solving</span></div></div></div></section><section class="reveal"><div class="eyebrow">06 / Tools I use</div><h2>The toolbox.</h2><div class="skillset"><span class="skill">C#</span><span class="skill">ASP.NET Core</span><span class="skill">EF Core</span><span class="skill">SQL Server</span><span class="skill">REST APIs</span><span class="skill">RabbitMQ</span><span class="skill">Redis</span><span class="skill">Hangfire</span><span class="skill">Clean Architecture</span><span class="skill">Microservices</span><span class="skill">Angular</span><span class="skill">Blazor</span><span class="skill">JavaScript</span><span class="skill">HTML / CSS</span><span class="skill">Docker</span></div></section>
+<section id="contact" class="reveal"><div class="contact"><div class="eyebrow">07 / Your turn</div><h2>Let's build something reliable.</h2><p>Open to Senior Software Engineer and Full-Stack (.NET + Angular) opportunities, with a strong foundation in backend, cloud, and system design.</p><div class="actions"><button class="btn primary" id="emailBtn">Email me ↗</button><button class="btn" id="whatsappBtn">WhatsApp ↗</button><button class="btn" id="linkedinBtn">LinkedIn ↗</button></div><p style="font-size:12px">Direct contact links are available below.</p></div></section><footer>© 2026 Hazim Attia · B.Sc. Electrical & Computer Engineering · Menofia University (2019) · Arabic / English</footer></main>
+<div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true"><div class="modal-panel" tabindex="-1"><button class="modal-close" id="modalClose" aria-label="Close project details">×</button><div id="modalContent"><div class="modal-head"><div class="eyebrow">ENGINEERING CASE STUDY</div><h2 id="modalTitle"></h2><p class="modal-summary" id="modalSummary"></p></div><div class="modal-flow" id="modalFlow"></div><div class="modal-section"><h3>My contribution</h3><p id="modalContribution"></p></div><div class="modal-section"><h3>Technology stack</h3><div id="modalTags"></div></div><div class="modal-footer"><span class="modal-counter" id="modalCounter"></span><div class="actions" style="margin:0"><button class="btn" id="modalPrev">← Previous</button><button class="btn primary" id="modalNext">Next →</button></div></div></div></div></div><script>
+
+const companies=[
+{name:'Sure Global Tech',role:'Senior Software Engineer',dates:'Mar 2025 – Present · Hybrid',description:'Designed and built a Meta WhatsApp Business API integration portal using .NET Core and Angular, hosted on IIS. Implemented RabbitMQ asynchronous message processing between internal microservices and Meta Cloud API. Profiled backend services and optimized API request handling for high-volume messaging.',stack:['.NET Core','Angular','RabbitMQ','Meta Cloud API','IIS']},
+{name:'Transflo',role:'Software Engineer',dates:'Apr 2023 – Oct 2024 · Remote',description:'Developed serverless REST APIs with .NET Core and AWS Lambda for enterprise logistics. Designed SQL Server schemas and optimized EF Core queries. Integrated Cognito authentication and SNS notifications.',stack:['.NET Core','AWS Lambda','SQL Server','EF Core','Cognito','SNS']},
+{name:'Azentio',role:'Software Engineer',dates:'May 2022 – Apr 2023 · Hybrid',description:'Built modular .NET Core microservices using Clean Architecture. Implemented EF Core data access with transactional consistency and data integrity. Developed responsive ASP.NET Core Razor Pages interfaces.',stack:['.NET Core','Clean Architecture','EF Core','Razor Pages']},
+{name:'Shadi Systems',role:'Software Engineer',dates:'Dec 2020 – Apr 2022 · On-site',description:'Developed enterprise healthcare and commercial applications using ASP.NET Core MVC and desktop frameworks. Refactored database queries and EF Core tracking patterns to reduce latency in critical dashboards.',stack:['ASP.NET Core MVC','EF Core','SQL Optimization','Desktop Apps']}
+];
+const companyArea=document.getElementById('companyChoices');
+const companyPanel=document.createElement('div');companyPanel.id='companyDetail';companyPanel.className='story company-detail is-entering';companyPanel.setAttribute('aria-live','polite');companyPanel.innerHTML='<div class="detail-content"></div>';companyArea.appendChild(companyPanel);
+const smoothState=new WeakMap();
+function smoothSwap(panel,markup,source){
+ const content=panel.querySelector('.detail-content');
+ const previous=smoothState.get(panel);
+ if(previous){previous.cancel();}
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const rect=panel.getBoundingClientRect(),target=source.getBoundingClientRect();
+ const y=Math.max(0,Math.min(100,((target.top+target.height/2-rect.top)/Math.max(rect.height,1))*100));
+ panel.style.setProperty('--origin-y',y+'%');
+ panel.classList.remove('is-entering');panel.classList.add('is-visible');
+ content.classList.remove('is-changing');
+ if(reduced){content.innerHTML=markup;return;}
+ // Animate the old and new content in parallel; no blank frame or timed hard cut.
+ const old=content.cloneNode(true);
+ old.removeAttribute('aria-live');old.setAttribute('aria-hidden','true');
+ old.className='detail-ghost';
+ content.parentElement.appendChild(old);
+ content.innerHTML=markup;
+ const inAnim=content.animate([
+  {opacity:0,transform:'translate3d(0,12px,0)',filter:'blur(5px)'},
+  {opacity:1,transform:'translate3d(0,0,0)',filter:'blur(0)'}
+ ],{duration:650,easing:'cubic-bezier(.16,1,.3,1)',fill:'both'});
+ const outAnim=old.animate([
+  {opacity:1,transform:'translate3d(0,0,0)',filter:'blur(0)'},
+  {opacity:0,transform:'translate3d(0,-9px,0)',filter:'blur(4px)'}
+ ],{duration:360,easing:'cubic-bezier(.4,0,.2,1)',fill:'both'});
+ const state={cancel(){inAnim.cancel();outAnim.cancel();old.remove();content.style.opacity='';}};
+ smoothState.set(panel,state);
+ inAnim.onfinish=()=>{inAnim.cancel();old.remove();if(smoothState.get(panel)===state)smoothState.delete(panel)};
+}
+let selectedCompany=-1;
+function showCompany(i){
+ if(i===selectedCompany)return;
+ const target=document.querySelector('[data-company="'+i+'"]');
+ document.querySelectorAll('[data-company]').forEach((b,j)=>{b.classList.toggle('active',i===j);b.setAttribute('aria-expanded',String(i===j));});
+ const c=companies[i];
+ smoothSwap(companyPanel,'<div class="eyebrow">'+c.dates+'</div><h3>'+c.name+'</h3><strong>'+c.role+'</strong><p>'+c.description+'</p>'+tags(c.stack),target);
+ selectedCompany=i;
+}
+document.querySelectorAll('[data-company]').forEach(b=>b.onclick=()=>showCompany(+b.dataset.company));showCompany(0);
+const projects=[
+{title:'Meta WhatsApp Integration Portal',text:'Built a .NET Core and Angular enterprise portal supporting templates, interactive buttons and lists. RabbitMQ enables asynchronous communication with Meta WhatsApp Cloud API; deployed on IIS.',stack:['.NET Core','Angular','RabbitMQ','IIS']},
+{title:'Transflo Wallet App',text:'Developed logistics fuel-management APIs to track fuel allocation and real-time load transfers, using .NET Core and AWS Lambda.',stack:['.NET Core','AWS Lambda','Logistics']},
+{title:'Securitization WebApp',text:'Developed a financial application with a Blazor front end and microservices architecture designed for transaction-heavy workflows and resilience during service failures.',stack:['Blazor','Microservices','FinTech']},
+{title:'Egyptian e-Invoice WebApp',text:'Created an invoicing application integrated with Egyptian Tax Authority APIs and digital security tokens for document signing and validation.',stack:['API Integration','Digital Signing','JavaScript','jQuery']}
+];
+function showProject(i){document.querySelectorAll('[data-project]').forEach((b,j)=>{b.classList.toggle('active',i===j);b.setAttribute('aria-pressed',String(i===j))})}
+document.querySelectorAll('[data-project]').forEach(b=>{
+ b.addEventListener('click',()=>openProject(+b.dataset.project));
+ b.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch')showProject(+b.dataset.project)});
+ b.addEventListener('focus',()=>showProject(+b.dataset.project));
+});
+const caseDetails=[
+{flow:['Angular Portal','ASP.NET Core API','RabbitMQ','Meta Cloud API'],contribution:'Designed and built the WhatsApp Business API integration portal, supporting templates, interactive buttons and lists. Implemented asynchronous communication between internal services and Meta Cloud API, and worked on API performance.'},
+{flow:['Logistics Client','.NET Core API','AWS Lambda','SQL Server'],contribution:'Developed serverless REST APIs for logistics fuel tracking, allocation and load transfers. Worked with SQL Server and EF Core, and integrated AWS services for authentication and notifications.'},
+{flow:['Blazor UI','Microservices','Financial Workflows'],contribution:'Developed a financial web application with a Blazor interface and a microservices architecture to support transaction-heavy workflows and service resilience.'},
+{flow:['Invoice UI','Signing Token','Egyptian Tax Authority API'],contribution:'Built a tax-compliant invoicing application integrated with the Egyptian Tax Authority APIs and digital signing tokens for invoice signing and validation.'}
+];
+let activeProject=0,lastProjectTrigger=null;
+const modal=document.getElementById('projectModal');
+const modalContent=document.getElementById('modalContent');
+let projectTransition=null;
+function renderModal(i){activeProject=(i+projects.length)%projects.length;const p=projects[activeProject],d=caseDetails[activeProject];document.getElementById('modalTitle').textContent=p.title;document.getElementById('modalSummary').textContent=p.text;document.getElementById('modalContribution').textContent=d.contribution;document.getElementById('modalTags').innerHTML=tags(p.stack);document.getElementById('modalCounter').textContent=String(activeProject+1).padStart(2,'0')+' / '+String(projects.length).padStart(2,'0');document.getElementById('modalFlow').innerHTML=d.flow.map((x,j)=>'<span class="flow-node" style="animation-delay:0ms">'+x+'</span>'+(j<d.flow.length-1?'<span class="flow-arrow">→</span>':'')).join('');showProject(activeProject)}
+function navigateProject(delta){
+ const next=(activeProject+delta+projects.length)%projects.length;
+ if(projectTransition){projectTransition.cancel();projectTransition=null}
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){renderModal(next);return}
+ const direction=delta>0?1:-1;
+ const out=modalContent.animate([{opacity:1,transform:'translateX(0)',filter:'blur(0px)'},{opacity:0,transform:`translateX(${-direction*22}px)`,filter:'blur(3px)'}],{duration:230,easing:'cubic-bezier(.4,0,1,1)',fill:'forwards'});
+ projectTransition=out;
+ out.onfinish=()=>{
+  if(projectTransition!==out)return;
+  renderModal(next);
+  modalContent.getAnimations().forEach(a=>{if(a===out)a.cancel()});
+  const enter=modalContent.animate([{opacity:0,transform:`translateX(${direction*22}px)`,filter:'blur(3px)'},{opacity:1,transform:'translateX(0)',filter:'blur(0px)'}],{duration:420,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'});
+  projectTransition=enter;
+  enter.onfinish=()=>{if(projectTransition===enter){enter.cancel();projectTransition=null}};
+ };
+}
+function openProject(i){if(projectTransition){projectTransition.cancel();projectTransition=null}showProject(i);lastProjectTrigger=document.activeElement;renderModal(i);modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.classList.add('modal-open');document.getElementById('modalClose').focus()}
+function closeProject(){if(projectTransition){projectTransition.cancel();projectTransition=null}showProject(-1);modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open');if(lastProjectTrigger&&lastProjectTrigger.focus)lastProjectTrigger.focus()}
+document.getElementById('modalClose').onclick=closeProject;modal.addEventListener('click',e=>{if(e.target===modal)closeProject()});document.getElementById('modalPrev').onclick=()=>navigateProject(-1);document.getElementById('modalNext').onclick=()=>navigateProject(1);document.addEventListener('keydown',e=>{if(!modal.classList.contains('open'))return;if(e.key==='Escape')closeProject();if(e.key==='ArrowRight')renderModal(activeProject+1);if(e.key==='ArrowLeft')renderModal(activeProject-1);if(e.key==='Tab'){const focusable=[...modal.querySelectorAll('button:not([disabled])')];const idx=focusable.indexOf(document.activeElement);if(e.shiftKey&&idx===0){e.preventDefault();focusable.at(-1).focus()}else if(!e.shiftKey&&idx===focusable.length-1){e.preventDefault();focusable[0].focus()}}});
+
+const challenges=[{title:"Owning a communication integration",text:"I took responsibility for WhatsApp functionality within a platform supporting WhatsApp and SMS. That meant thinking beyond an API call: integration contracts, workflows, failure handling and maintainability.",tags:["Meta WhatsApp API","REST APIs","ASP.NET Core"]},{title:"Moving expensive work out of the request",text:"When large Excel processing created a long-running operation, we separated it into a background service. The design keeps request handling responsive while work continues independently.",tags:["Background Services","Excel Processing","Reliability"]},{title:"Building reusable backend foundations",text:"HForge is my independent engineering initiative exploring reusable backend packages and boundaries for persistence, messaging and infrastructure. It's a platform for applying architecture ideas, not a claimed production outcome.",tags:["HForge","Clean Architecture","Messaging"]},{title:"My engineering philosophy: automate the repetitive",text:"I do not see engineering as simply finishing assigned tickets. When a recurring task slows down the team, I look for a small, maintainable tool to eliminate the friction: configuration helpers for appsettings, shortcuts and scripts for routine operations, or repeatable workflows. The goal is to reduce manual steps, prevent avoidable mistakes and give engineers more time for problems that actually need their attention.",tags:["Engineering Philosophy","Developer Experience","Automation","Scripts & Tools"]}];
+function tags(t){return '<div class="tags">'+t.map(x=>'<span class="tag">'+x+'</span>').join('')+'</div>'}
+function challenge(i){
+ const cards=[...document.querySelectorAll('[data-challenge]')];
+ cards.forEach((b,j)=>{b.classList.toggle('active',i===j);b.setAttribute('aria-pressed',String(i===j))});
+ const el=document.getElementById('challengeResult');
+ if(i<0){el.classList.remove('visible-result');el.innerHTML='';return;}
+ const c=challenges[i];
+ el.innerHTML='<h3>'+c.title+'</h3><p>'+c.text+'</p>'+tags(c.tags);
+ el.classList.remove('visible-result');void el.offsetWidth;el.classList.add('visible-result');
+}
+const challengeCards=[...document.querySelectorAll('[data-challenge]')];
+challengeCards.forEach(b=>{
+ const index=+b.dataset.challenge;
+ b.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'||e.pointerType==='pen')challenge(index)});
+ b.addEventListener('focus',()=>challenge(index));
+ b.addEventListener('click',()=>challenge(index));
+});
+const challengeGrid=document.querySelector('#challenges .challenge-grid');
+challengeGrid.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'||e.pointerType==='pen')challenge(-1)});
+document.getElementById('challenges').addEventListener('focusout',e=>{if(!e.currentTarget.contains(e.relatedTarget))challenge(-1)});
+challenge(-1);
+
+const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);e.target.querySelectorAll('[data-count]').forEach(el=>{const goal=+el.dataset.count;let n=0;const tick=()=>{n++;el.textContent=n===goal&&goal===6?'~6':n;if(n<goal)setTimeout(tick,130)};tick()})}}),{threshold:.13});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const commands=[["whoami",["Hazim Attia","Senior Software Engineer"]],["cat focus.txt",["Full-Stack Development • System Design • Cloud & Integrations"]],["echo $STATUS",["Available for engineering conversations ✓"]]];let ci=0,letter=0;function type(){const [cmd,output]=commands[ci];document.getElementById('typed').textContent=cmd.slice(0,letter++);if(letter<=cmd.length){setTimeout(type,55);return}const line=document.createElement('div');line.className='out';line.textContent=output.join(' | ');document.getElementById('terminalOutput').appendChild(line);setTimeout(()=>{ci=(ci+1)%commands.length;letter=0;if(ci===0)document.getElementById('terminalOutput').innerHTML='';type()},2200)}type();
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');let particles=[];function resize(){canvas.width=innerWidth;canvas.height=innerHeight;particles=Array.from({length:Math.min(85,Math.floor(innerWidth/17))},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5+.5,v:Math.random()*.45+.1}))}addEventListener('resize',resize);resize();let frame=0;function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#c8792c';for(const p of particles){p.y-=p.v;if(p.y<0)p.y=canvas.height;ctx.globalAlpha=.2+p.r*.15;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()}ctx.globalAlpha=1;requestAnimationFrame(animate)}if(!matchMedia('(prefers-reduced-motion: reduce)').matches)animate();addEventListener('pointermove',e=>{const g=document.getElementById('glow');g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'});
+const menuToggle=document.getElementById('menuToggle');const mainNav=document.getElementById('mainNav');menuToggle.addEventListener('click',()=>{const open=mainNav.classList.toggle('nav-open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.textContent=open?'✕':'☰';});mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mainNav.classList.remove('nav-open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰';}));
+document.getElementById('emailBtn').onclick=()=>location.href='mailto:hazemattya007@gmail.com';document.getElementById('whatsappBtn').onclick=()=>window.open('https://wa.me/201067808250','_blank','noopener');document.getElementById('linkedinBtn').onclick=()=>window.open('https://www.linkedin.com/in/hazimattia007','_blank','noopener');
+</script></body></html>
