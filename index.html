@@ -281,7 +281,7 @@ challengeCards.forEach(b=>{
  const index=+b.dataset.challenge;
  b.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'||e.pointerType==='pen')challenge(index)});
  b.addEventListener('focus',()=>challenge(index));
- b.addEventListener('click',()=>{challenge(index);if(matchMedia('(pointer:coarse)').matches){document.getElementById('challengeResult').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'});}});
+ b.addEventListener('click',()=>challenge(index));
 });
 const challengeGrid=document.querySelector('#challenges .challenge-grid');
 challengeGrid.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'||e.pointerType==='pen')challenge(-1)});
