@@ -179,6 +179,27 @@ button,a,[role="button"]{-webkit-tap-highlight-color:rgba(200,121,44,.18);touch-
  #challenges .challenge-inline-detail.expanded{display:block}
 }
 @media(prefers-reduced-motion:reduce){#challenges .challenge-inline-detail.expanded{animation:none}}
+
+/* Compact, viewport-fitting project popup */
+@media(max-width:800px){
+ .project-modal{padding:8px;align-items:center}
+ .modal-panel{width:min(100%,620px);max-height:calc(100dvh - 16px);padding:18px 16px 14px;border-radius:16px;overflow-y:auto}
+ .modal-head h2{font-size:clamp(23px,6vw,34px);line-height:1.1;margin:7px 0}
+ .modal-summary{font-size:13px;line-height:1.45;margin:6px 0}
+ .modal-flow{margin:12px 0;padding:10px;gap:5px}
+ .flow-node{font-size:11px;padding:7px 8px}
+ .flow-arrow{font-size:12px}
+ .modal-section{margin-top:11px}
+ .modal-section h3{font-size:11px;letter-spacing:1px;margin:0 0 5px}
+ .modal-section p{font-size:13px;line-height:1.45;margin:0}
+ .modal-section .tags{gap:5px;margin-top:6px}
+ .modal-section .tag{font-size:11px;padding:5px 8px}
+ .modal-footer{margin-top:13px;gap:6px}
+ .modal-footer .actions{gap:7px}
+ .modal-footer .btn{min-height:40px;font-size:12px;padding:8px}
+ .modal-close{top:9px;right:9px;width:36px;height:36px;z-index:2}
+ .modal-head{padding-right:30px}
+}
 </style></head><body><canvas id="particles"></canvas><div class="glow" id="glow"></div><header><div class="wrap nav"><div class="brand">HA<span>.</span> / ENGINEERING</div><nav id="mainNav" aria-label="Main navigation"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#challenges">Challenges</a><a href="#education">Education</a><a href="#contact">Contact</a></nav><button class="mobile-menu" id="menuToggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation">☰</button><a class="btn" href="#contact">Let's talk ↗</a></div></header><main class="wrap"><div class="hero"><div><div class="eyebrow">Senior Software Engineer · Full-Stack Development · System Design · Cloud & Integrations</div><h1>I build<br><em>what scales.</em></h1><p>I'm Hazim Attia. I am a Senior Software Engineer at Sure Global Tech, based in Egypt. I build software across frontend and backend — from interactive web applications to APIs, cloud integrations, and reliable distributed workflows. I also created HForge, a reusable .NET engineering toolkit.</p><div class="actions"><a class="btn primary" href="#experience">Explore my experience ↓</a><a class="btn" href="Hazim_Attia_Resume.pdf" download="Hazim_Attia_Resume.pdf">Download resume ↓</a></div><div class="scrollhint">↓ Scroll to explore the engineering story</div></div><div class="terminal"><div class="termbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><small>hazim@portfolio: ~</small></div><div class="termcontent"><div><span class="prompt">$</span> <span id="typed" class="cmd"></span><span class="blink">▌</span></div><div id="terminalOutput"></div></div></div></div>
 <section class="reveal"><div class="eyebrow">01 / At a glance</div><h2>Engineering with ownership.</h2><p class="muted">Based in Egypt. Electrical & Electronics Engineering graduate from Menoufia University. Over five years building end-to-end software, spanning user interfaces, APIs, integrations, cloud services and system design.</p><div class="stats"><div class="stat"><strong>5+</strong><small>Years of experience (approx.)</small></div><div class="stat"><strong>4+</strong><small>Industries I’ve built software for<br><span class="industry-list">Logistics · FinTech · Healthcare · Business Communications</span></small></div><div class="stat"><strong>∞</strong><small>Curiosity about better system design</small></div></div></section>
 <section id="experience" class="reveal"><div class="eyebrow">02 / Professional experience</div><h2>Four companies. One evolving craft.</h2><p class="muted">Explore each role and the engineering responsibilities behind it.</p><div class="company-accordion" id="companyChoices"><div class="company-row"><button class="choice active" data-company="0" type="button">Sure Global Tech · 2025–Now</button></div><div class="company-row"><button class="choice" data-company="1" type="button">Transflo · 2023–2024</button></div><div class="company-row"><button class="choice" data-company="2" type="button">Azentio · 2022–2023</button></div><div class="company-row"><button class="choice" data-company="3" type="button">Shadi Systems · 2020–2022</button></div></div></section><section id="projects" class="reveal"><div class="eyebrow">03 / Selected projects</div><h2>Systems I've helped build.</h2><p class="muted">Click a project to open its full case study in a popup.</p><div class="challenge-grid"><button class="challenge" data-project="0"><div class="symbol">◎</div><h3>WhatsApp Portal</h3><p>Messaging and Meta Cloud API</p></button><button class="challenge" data-project="1"><div class="symbol">↗</div><h3>Transflo Wallet</h3><p>Serverless logistics APIs</p></button><button class="challenge" data-project="2"><div class="symbol">◇</div><h3>Securitization</h3><p>Financial microservices</p></button><button class="challenge" data-project="3"><div class="symbol">▤</div><h3>Egyptian e-Invoice</h3><p>Tax authority integration</p></button></div></section><section id="challenges" class="reveal"><div class="eyebrow">04 / Engineering philosophy</div><h2>Engineering is more than completing tickets.</h2><p class="muted">My engineering philosophy: solve the problem, then simplify the work around it. Explore how I approach integrations, performance, reusable systems, and everyday automation.</p><div class="challenge-grid"><button class="challenge" data-challenge="0"><div class="symbol">↗</div><h3>Complex Integrations</h3><p>How do you own a WhatsApp integration end to end?</p></button><button class="challenge" data-challenge="1"><div class="symbol">◷</div><h3>Slow Requests</h3><p>What happens when an Excel import takes too long?</p></button><button class="challenge" data-challenge="2"><div class="symbol">◇</div><h3>Maintainable Systems</h3><p>How do you design components for reuse and growth?</p></button><button class="challenge" data-challenge="3"><div class="symbol">⚙</div><h3>Automating Routine Work</h3><p>Why repeat a manual task when code can make it simpler?</p></button></div><div id="challengeResult" class="result philosophy-result" aria-live="polite"></div></section>
@@ -257,7 +278,7 @@ let activeProject=0,lastProjectTrigger=null;
 const modal=document.getElementById('projectModal');
 const modalContent=document.getElementById('modalContent');
 let projectTransition=null;
-function renderModal(i){activeProject=(i+projects.length)%projects.length;const p=projects[activeProject],d=caseDetails[activeProject];document.getElementById('modalTitle').textContent=p.title;document.getElementById('modalSummary').textContent=p.text;document.getElementById('modalContribution').textContent=d.contribution;document.getElementById('modalTags').innerHTML=tags(p.stack);document.getElementById('modalCounter').textContent=String(activeProject+1).padStart(2,'0')+' / '+String(projects.length).padStart(2,'0');document.getElementById('modalFlow').innerHTML=d.flow.map((x,j)=>'<span class="flow-node" style="animation-delay:0ms">'+x+'</span>'+(j<d.flow.length-1?'<span class="flow-arrow">→</span>':'')).join('');showProject(activeProject)}
+function renderModal(i){activeProject=(i+projects.length)%projects.length;const p=projects[activeProject],d=caseDetails[activeProject];document.getElementById('modalTitle').textContent=p.title;document.getElementById('modalSummary').textContent=p.text;document.getElementById('modalContribution').textContent=d.contribution;document.getElementById('modalTags').innerHTML=tags(p.stack);document.getElementById('modalCounter').textContent=String(activeProject+1).padStart(2,'0')+' / '+String(projects.length).padStart(2,'0');document.getElementById('modalFlow').innerHTML=d.flow.map((x,j)=>'<span class="flow-node" style="animation-delay:0ms">'+x+'</span>'+(j<d.flow.length-1?'<span class="flow-arrow">→</span>':'')).join('');showProject(activeProject);fitProjectModal()}
 function navigateProject(delta){
  const next=(activeProject+delta+projects.length)%projects.length;
  if(projectTransition){projectTransition.cancel();projectTransition=null}
@@ -274,7 +295,20 @@ function navigateProject(delta){
   enter.onfinish=()=>{if(projectTransition===enter){enter.cancel();projectTransition=null}};
  };
 }
-function openProject(i){if(projectTransition){projectTransition.cancel();projectTransition=null}showProject(i);lastProjectTrigger=document.activeElement;renderModal(i);modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.classList.add('modal-open');document.getElementById('modalClose').focus()}
+function fitProjectModal(){
+ const panel=document.querySelector('.modal-panel');
+ if(!panel||!modal.classList.contains('open'))return;
+ modalContent.style.zoom='1';
+ if(!matchMedia('(max-width:800px)').matches)return;
+ const available=window.visualViewport?window.visualViewport.height:window.innerHeight;
+ const maxHeight=Math.max(200,available-24);
+ const natural=modalContent.scrollHeight+32;
+ const factor=Math.min(1,maxHeight/natural);
+ modalContent.style.zoom=String(Math.max(.72,Math.floor(factor*100)/100));
+}
+window.addEventListener('resize',fitProjectModal);
+if(window.visualViewport)window.visualViewport.addEventListener('resize',fitProjectModal);
+function openProject(i){if(projectTransition){projectTransition.cancel();projectTransition=null}showProject(i);lastProjectTrigger=document.activeElement;renderModal(i);modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.classList.add('modal-open');document.getElementById('modalClose').focus();fitProjectModal()}
 function closeProject(){if(projectTransition){projectTransition.cancel();projectTransition=null}showProject(-1);modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open');if(lastProjectTrigger&&lastProjectTrigger.focus)lastProjectTrigger.focus()}
 document.getElementById('modalClose').onclick=closeProject;modal.addEventListener('click',e=>{if(e.target===modal)closeProject()});document.getElementById('modalPrev').onclick=()=>navigateProject(-1);document.getElementById('modalNext').onclick=()=>navigateProject(1);
 /* Horizontal swipes change case studies; vertical swipes scroll normally. */
