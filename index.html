@@ -160,6 +160,25 @@ button,a,[role="button"]{-webkit-tap-highlight-color:rgba(200,121,44,.18);touch-
  nav#mainNav{max-height:calc(100dvh - 80px);overflow-y:auto;overscroll-behavior:contain}
 }
 @media(max-width:360px){.stats{grid-template-columns:1fr}.hero h1{font-size:42px}.nav>.btn{padding:10px}}
+
+/* Details live directly beneath each engineering challenge */
+#challenges .challenge-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:start}
+#challenges .challenge-inline-detail{display:none;grid-column:1/-1;background:linear-gradient(135deg,#302219,#1b1612);border:1px solid #a06c42;border-radius:17px;padding:24px;color:#f4d9a0}
+#challenges .challenge-inline-detail.expanded{display:block;animation:challenge-appear .25s ease-out both}
+#challenges .challenge-inline-detail h3{margin:0 0 10px;font-size:20px}
+#challenges .challenge-inline-detail p{color:#d4c2ad;line-height:1.7}
+@keyframes challenge-appear{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+@media(max-width:1000px){#challenges .challenge-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){
+ #challenges .challenge-grid{display:flex;flex-direction:column;gap:0}
+ #challenges .challenge[data-challenge]{width:100%;min-height:0;margin-top:12px;border-radius:15px;padding:20px;position:relative}
+ #challenges .challenge[data-challenge]::after{content:'+';position:absolute;right:20px;top:18px;font-size:24px;color:#f4d9a0}
+ #challenges .challenge[data-challenge].active::after{content:'−'}
+ #challenges .challenge-inline-detail{width:100%;margin-top:0;border-radius:0 0 15px 15px;padding:19px 20px}
+ #challenges .challenge[data-challenge].active{border-radius:15px 15px 0 0;margin-bottom:0;transform:none}
+ #challenges .challenge-inline-detail.expanded{display:block}
+}
+@media(prefers-reduced-motion:reduce){#challenges .challenge-inline-detail.expanded{animation:none}}
 </style></head><body><canvas id="particles"></canvas><div class="glow" id="glow"></div><header><div class="wrap nav"><div class="brand">HA<span>.</span> / ENGINEERING</div><nav id="mainNav" aria-label="Main navigation"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#challenges">Challenges</a><a href="#education">Education</a><a href="#contact">Contact</a></nav><button class="mobile-menu" id="menuToggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation">☰</button><a class="btn" href="#contact">Let's talk ↗</a></div></header><main class="wrap"><div class="hero"><div><div class="eyebrow">Senior Software Engineer · Full-Stack Development · System Design · Cloud & Integrations</div><h1>I build<br><em>what scales.</em></h1><p>I'm Hazim Attia. I am a Senior Software Engineer at Sure Global Tech, based in Egypt. I build software across frontend and backend — from interactive web applications to APIs, cloud integrations, and reliable distributed workflows. I also created HForge, a reusable .NET engineering toolkit.</p><div class="actions"><a class="btn primary" href="#experience">Explore my experience ↓</a><a class="btn" href="Hazim_Attia_Resume.pdf" download="Hazim_Attia_Resume.pdf">Download resume ↓</a></div><div class="scrollhint">↓ Scroll to explore the engineering story</div></div><div class="terminal"><div class="termbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><small>hazim@portfolio: ~</small></div><div class="termcontent"><div><span class="prompt">$</span> <span id="typed" class="cmd"></span><span class="blink">▌</span></div><div id="terminalOutput"></div></div></div></div>
 <section class="reveal"><div class="eyebrow">01 / At a glance</div><h2>Engineering with ownership.</h2><p class="muted">Based in Egypt. Electrical & Electronics Engineering graduate from Menoufia University. Over five years building end-to-end software, spanning user interfaces, APIs, integrations, cloud services and system design.</p><div class="stats"><div class="stat"><strong>5+</strong><small>Years of experience (approx.)</small></div><div class="stat"><strong>4+</strong><small>Industries I’ve built software for<br><span class="industry-list">Logistics · FinTech · Healthcare · Business Communications</span></small></div><div class="stat"><strong>∞</strong><small>Curiosity about better system design</small></div></div></section>
 <section id="experience" class="reveal"><div class="eyebrow">02 / Professional experience</div><h2>Four companies. One evolving craft.</h2><p class="muted">Explore each role and the engineering responsibilities behind it.</p><div class="company-accordion" id="companyChoices"><div class="company-row"><button class="choice active" data-company="0" type="button">Sure Global Tech · 2025–Now</button></div><div class="company-row"><button class="choice" data-company="1" type="button">Transflo · 2023–2024</button></div><div class="company-row"><button class="choice" data-company="2" type="button">Azentio · 2022–2023</button></div><div class="company-row"><button class="choice" data-company="3" type="button">Shadi Systems · 2020–2022</button></div></div></section><section id="projects" class="reveal"><div class="eyebrow">03 / Selected projects</div><h2>Systems I've helped build.</h2><p class="muted">Click a project to open its full case study in a popup.</p><div class="challenge-grid"><button class="challenge" data-project="0"><div class="symbol">◎</div><h3>WhatsApp Portal</h3><p>Messaging and Meta Cloud API</p></button><button class="challenge" data-project="1"><div class="symbol">↗</div><h3>Transflo Wallet</h3><p>Serverless logistics APIs</p></button><button class="challenge" data-project="2"><div class="symbol">◇</div><h3>Securitization</h3><p>Financial microservices</p></button><button class="challenge" data-project="3"><div class="symbol">▤</div><h3>Egyptian e-Invoice</h3><p>Tax authority integration</p></button></div></section><section id="challenges" class="reveal"><div class="eyebrow">04 / Engineering philosophy</div><h2>Engineering is more than completing tickets.</h2><p class="muted">My engineering philosophy: solve the problem, then simplify the work around it. Explore how I approach integrations, performance, reusable systems, and everyday automation.</p><div class="challenge-grid"><button class="challenge" data-challenge="0"><div class="symbol">↗</div><h3>Complex Integrations</h3><p>How do you own a WhatsApp integration end to end?</p></button><button class="challenge" data-challenge="1"><div class="symbol">◷</div><h3>Slow Requests</h3><p>What happens when an Excel import takes too long?</p></button><button class="challenge" data-challenge="2"><div class="symbol">◇</div><h3>Maintainable Systems</h3><p>How do you design components for reuse and growth?</p></button><button class="challenge" data-challenge="3"><div class="symbol">⚙</div><h3>Automating Routine Work</h3><p>Why repeat a manual task when code can make it simpler?</p></button></div><div id="challengeResult" class="result philosophy-result" aria-live="polite"></div></section>
@@ -267,25 +286,41 @@ document.addEventListener('keydown',e=>{if(!modal.classList.contains('open'))ret
 
 const challenges=[{title:"Owning a communication integration",text:"I took responsibility for WhatsApp functionality within a platform supporting WhatsApp and SMS. That meant thinking beyond an API call: integration contracts, workflows, failure handling and maintainability.",tags:["Meta WhatsApp API","REST APIs","ASP.NET Core"]},{title:"Moving expensive work out of the request",text:"When large Excel processing created a long-running operation, we separated it into a background service. The design keeps request handling responsive while work continues independently.",tags:["Background Services","Excel Processing","Reliability"]},{title:"Building reusable backend foundations",text:"HForge is my independent engineering initiative exploring reusable backend packages and boundaries for persistence, messaging and infrastructure. It's a platform for applying architecture ideas, not a claimed production outcome.",tags:["HForge","Clean Architecture","Messaging"]},{title:"My engineering philosophy: automate the repetitive",text:"I do not see engineering as simply finishing assigned tickets. When a recurring task slows down the team, I look for a small, maintainable tool to eliminate the friction: configuration helpers for appsettings, shortcuts and scripts for routine operations, or repeatable workflows. The goal is to reduce manual steps, prevent avoidable mistakes and give engineers more time for problems that actually need their attention.",tags:["Engineering Philosophy","Developer Experience","Automation","Scripts & Tools"]}];
 function tags(t){return '<div class="tags">'+t.map(x=>'<span class="tag">'+x+'</span>').join('')+'</div>'}
-function challenge(i){
- const cards=[...document.querySelectorAll('[data-challenge]')];
- cards.forEach((b,j)=>{b.classList.toggle('active',i===j);b.setAttribute('aria-pressed',String(i===j))});
- const el=document.getElementById('challengeResult');
- if(i<0){el.classList.remove('visible-result');el.innerHTML='';return;}
- const c=challenges[i];
- el.innerHTML='<h3>'+c.title+'</h3><p>'+c.text+'</p>'+tags(c.tags);
- el.classList.remove('visible-result');void el.offsetWidth;el.classList.add('visible-result');
-}
 const challengeCards=[...document.querySelectorAll('[data-challenge]')];
-challengeCards.forEach(b=>{
- const index=+b.dataset.challenge;
- b.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'||e.pointerType==='pen')challenge(index)});
- b.addEventListener('focus',()=>challenge(index));
- b.addEventListener('click',()=>challenge(index));
-});
 const challengeGrid=document.querySelector('#challenges .challenge-grid');
-challengeGrid.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'||e.pointerType==='pen')challenge(-1)});
-document.getElementById('challenges').addEventListener('focusout',e=>{if(!e.currentTarget.contains(e.relatedTarget))challenge(-1)});
+const legacyChallengeResult=document.getElementById('challengeResult');
+legacyChallengeResult.remove();
+challengeCards.forEach((button,i)=>{
+ const detail=document.createElement('div');
+ detail.className='challenge-inline-detail';
+ detail.id='challenge-detail-'+i;
+ detail.innerHTML='<h3>'+challenges[i].title+'</h3><p>'+challenges[i].text+'</p>'+tags(challenges[i].tags);
+ detail.setAttribute('role','region');
+ detail.setAttribute('aria-label',challenges[i].title+' details');
+ button.insertAdjacentElement('afterend',detail);
+ button.setAttribute('aria-controls',detail.id);
+ button.setAttribute('aria-expanded','false');
+});
+let selectedChallenge=-1;
+function challenge(i){
+ const touchLayout=matchMedia('(max-width:800px), (pointer:coarse)').matches;
+ if(touchLayout&&i===selectedChallenge)i=-1;
+ selectedChallenge=i;
+ challengeCards.forEach((button,j)=>{
+  const active=j===i;
+  button.classList.toggle('active',active);
+  button.setAttribute('aria-pressed',String(active));
+  button.setAttribute('aria-expanded',String(active));
+  const detail=document.getElementById('challenge-detail-'+j);
+  detail.classList.toggle('expanded',active);
+  detail.setAttribute('aria-hidden',String(!active));
+ });
+}
+challengeCards.forEach((button,i)=>{
+ button.addEventListener('click',()=>challenge(i));
+ button.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&matchMedia('(hover:hover)').matches)challenge(i)});
+});
+challengeGrid.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'&&matchMedia('(hover:hover)').matches)challenge(-1)});
 challenge(-1);
 
 const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);e.target.querySelectorAll('[data-count]').forEach(el=>{const goal=+el.dataset.count;let n=0;const tick=()=>{n++;el.textContent=n===goal&&goal===6?'~6':n;if(n<goal)setTimeout(tick,130)};tick()})}}),{threshold:.13});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));if(matchMedia('(pointer:coarse)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));}
