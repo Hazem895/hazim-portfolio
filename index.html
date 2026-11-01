@@ -201,85 +201,40 @@ button,a,[role="button"]{-webkit-tap-highlight-color:rgba(200,121,44,.18);touch-
  .modal-head{padding-right:30px}
 }
 
-/* Work: each company keeps its own details directly underneath on touch layouts */
-@media(max-width:700px){
- .company-accordion{display:flex;flex-direction:column;gap:10px}
- .company-row{display:flex;flex-direction:column;gap:0}
- .company-row>.choice{width:100%;border-radius:14px;min-height:64px}
- .company-row>.choice.active{border-radius:14px 14px 0 0;transform:none}
- .company-row>.choice.active::after{content:'−';opacity:1;transform:none}
- .company-row>.choice:not(.active)::after{content:'+';opacity:1;transform:none}
- .company-detail{order:initial;width:100%;min-height:0;height:auto;padding:22px;border-radius:0 0 14px 14px;margin-top:-1px;box-shadow:0 12px 30px #0005}
- .company-detail h3{margin-top:8px}
- .company-detail p{margin-bottom:12px}
-}
-@media(max-width:620px){
- .education-card{display:flex;flex-direction:column;border-radius:18px}
- .education-year{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;padding:18px 20px;min-height:0}
- .education-year strong{font-size:44px;letter-spacing:-2px}
- .education-year-label{font-size:10px;letter-spacing:.08em}
- .education-info{padding:22px 20px;gap:9px}
- .education-info h3{font-size:26px;line-height:1.2}
- .education-university{font-size:17px}
- .education-desc{font-size:14px;line-height:1.6}
- .education-tags{gap:6px}
- .education-tags span{font-size:11px;padding:7px 9px}
-}
-
-/* Touch devices: instant, stable accordion content without sliding or blur */
-@media(max-width:800px),(pointer:coarse){
- .company-detail,.company-detail .detail-content,.company-row>.choice,.company-detail.is-entering,.company-detail.is-visible{
-  transition:none!important;animation:none!important;filter:none!important;transform:none!important;
- }
- .company-detail .detail-ghost{display:none!important}
- .company-row>.choice:hover,.company-row>.choice.active{transform:none!important}
-}
-@media(max-width:620px){
- /* Graduation as a clean, compact credential card */
- .education-card{display:block!important;border:1px solid rgba(244,217,160,.25);border-radius:16px;background:#241b15;box-shadow:none;overflow:hidden}
- .education-year{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important;padding:15px 18px!important;background:#36271c;border:0!important;border-bottom:1px solid rgba(244,217,160,.18)!important}
- .education-year strong{order:0;font-size:32px!important;line-height:1.1;letter-spacing:-1px}
- .education-year-label{font-size:10px!important;letter-spacing:.06em;white-space:nowrap}
- .education-year-label:first-child{order:-1;color:#d3b89b}
- .education-year-label:last-child{margin-left:auto;color:#d3b89b}
- .education-info{display:block!important;padding:20px 18px!important}
- .education-kicker{display:block;font-size:10px;margin-bottom:9px;letter-spacing:.12em}
- .education-info h3{font-size:clamp(22px,6vw,27px)!important;line-height:1.22!important;letter-spacing:-.02em;margin:0 0 8px!important}
- .education-university{font-size:16px!important;margin:0 0 12px!important}
- .education-desc{font-size:13px!important;line-height:1.6!important;margin:0 0 15px!important}
- .education-tags{gap:7px}
- .education-tags span{font-size:10px!important;padding:7px 9px!important}
- .education-card:hover{transform:none!important;box-shadow:none!important}
-}
-
-/* Portfolio UX refinement: a quiet credential card and stable touch accordion */
-.education-card{display:grid;grid-template-columns:170px minmax(0,1fr);background:#211a15;border:1px solid #72543b;border-radius:18px;box-shadow:none;transition:border-color .2s}
+/* Unified component refinements: one authoritative mobile treatment */
+.education-card{display:grid;grid-template-columns:170px minmax(0,1fr);margin-top:30px;overflow:hidden;border:1px solid #72543b;border-radius:18px;background:#211a15;box-shadow:none;transition:border-color .2s}
 .education-card:hover{transform:none;box-shadow:none}
-.education-year{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:8px;padding:26px;background:#35271c;border-right:1px solid #72543b}
-.education-year strong{font-size:clamp(36px,4vw,54px);letter-spacing:-.05em;line-height:1.05}
+.education-year{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:8px;padding:26px;background:#35271c;border-right:1px solid #72543b}
+.education-year strong{font-size:clamp(36px,4vw,54px);line-height:1.05;letter-spacing:-.05em}
 .education-year-label{font-size:10px;letter-spacing:.12em;color:#d4b08c}
-.education-info{padding:28px 30px;gap:8px}
-.education-info h3{font-size:clamp(23px,2.7vw,32px);letter-spacing:-.025em;line-height:1.24}
+.education-info{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:28px 30px}
+.education-info h3{font-size:clamp(23px,2.7vw,32px);line-height:1.24;letter-spacing:-.025em}
 .education-university{font-size:17px;margin:0;color:#e6c99e}
 .education-desc{font-size:14px;line-height:1.6;margin:4px 0 0;max-width:58ch}
 @media(max-width:700px){
  .company-accordion{display:flex;flex-direction:column;gap:10px}
- .company-row{display:flex;flex-direction:column;gap:0;min-width:0}
- .company-row>.choice{width:100%;min-height:58px;padding:15px 18px;border-radius:12px;transition:background-color .15s,border-color .15s;transform:none!important;box-shadow:none!important}
+ .company-row{display:flex;flex-direction:column;min-width:0;gap:0}
+ .company-row>.choice{width:100%;min-height:58px;padding:15px 18px;border-radius:12px;transform:none!important;box-shadow:none!important;transition:background-color .15s,border-color .15s}
  .company-row>.choice.active{border-radius:12px 12px 0 0}
- .company-detail{display:block;position:static;width:100%;height:auto;min-height:0;padding:18px 18px 20px;margin:0;border-radius:0 0 12px 12px;transform:none!important;filter:none!important;transition:none!important;animation:none!important;box-shadow:none}
- .company-detail .detail-content{transition:none!important;animation:none!important;transform:none!important;filter:none!important}
+ .company-row>.choice.active::after{content:'−';opacity:1;transform:none}
+ .company-row>.choice:not(.active)::after{content:'+';opacity:1;transform:none}
+ .company-detail{display:block;position:static;order:initial;width:100%;height:auto;min-height:0;margin:0;padding:18px 18px 20px;border-radius:0 0 12px 12px;transform:none!important;filter:none!important;transition:none!important;animation:none!important;box-shadow:none}
+ .company-detail .detail-content{width:100%;transition:none!important;animation:none!important;transform:none!important;filter:none!important}
+ .company-detail .detail-ghost{display:none!important}
  .company-detail h3{font-size:23px;line-height:1.25;margin:8px 0}
  .company-detail p{line-height:1.65}
- .education-card{display:block!important;border-radius:16px!important;overflow:hidden}
- .education-year{display:flex!important;flex-direction:row!important;justify-content:space-between!important;align-items:center!important;gap:12px!important;padding:14px 18px!important;background:#35271c;border-right:0!important;border-bottom:1px solid #72543b!important}
- .education-year strong{font-size:26px!important;line-height:1.1!important;letter-spacing:-.04em!important}
- .education-year-label{font-size:10px!important;letter-spacing:.1em!important}
- .education-info{display:flex!important;flex-direction:column!important;gap:8px!important;padding:20px 18px 22px!important}
- .education-kicker{font-size:10px!important;letter-spacing:.1em!important;margin:0!important}
- .education-info h3{font-size:clamp(22px,5.8vw,28px)!important;line-height:1.23!important;margin:0!important}
- .education-university{font-size:16px!important;margin:0!important}
- .education-desc{font-size:13px!important;line-height:1.65!important;margin:5px 0 0!important}
+ .education-card{display:block;border-radius:16px}
+ .education-year{flex-direction:row;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-right:0;border-bottom:1px solid #72543b}
+ .education-year strong{font-size:26px;line-height:1.1}
+ .education-info{padding:20px 18px 22px;gap:8px}
+ .education-kicker{font-size:10px;letter-spacing:.1em}
+ .education-info h3{font-size:clamp(22px,5.8vw,28px);line-height:1.23}
+ .education-university{font-size:16px}
+ .education-desc{font-size:13px;line-height:1.65;margin-top:5px}
+}
+@media(max-width:800px),(pointer:coarse){
+ .company-detail,.company-detail .detail-content{transition:none!important;animation:none!important;filter:none!important;transform:none!important}
+ .company-row>.choice:hover{transform:none!important}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style></head><body><canvas id="particles"></canvas><div class="glow" id="glow"></div><header><div class="wrap nav"><div class="brand">HA<span>.</span> / ENGINEERING</div><nav id="mainNav" aria-label="Main navigation"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#challenges">Challenges</a><a href="#education">Education</a><a href="#contact">Contact</a></nav><button class="mobile-menu" id="menuToggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation">☰</button><a class="btn" href="#contact">Let's talk ↗</a></div></header><main class="wrap"><div class="hero"><div><div class="eyebrow">Senior Software Engineer · Full-Stack Development · System Design · Cloud & Integrations</div><h1>I build<br><em>what scales.</em></h1><p>I'm Hazim Attia. I am a Senior Software Engineer at Sure Global Tech, based in Egypt. I build software across frontend and backend — from interactive web applications to APIs, cloud integrations, and reliable distributed workflows. I also created HForge, a reusable .NET engineering toolkit.</p><div class="actions"><a class="btn primary" href="#experience">Explore my experience ↓</a><a class="btn" id="resumeDownload" href="Hazim%20Attia%20-%20Senior%20Software%20Engineer.pdf" download="Hazim Attia - Senior Software Engineer.pdf">Download resume ↓</a></div><div class="scrollhint">↓ Scroll to explore the engineering story</div></div><div class="terminal"><div class="termbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><small>hazim@portfolio: ~</small></div><div class="termcontent"><div><span class="prompt">$</span> <span id="typed" class="cmd"></span><span class="blink">▌</span></div><div id="terminalOutput"></div></div></div></div>
@@ -297,7 +252,7 @@ const companies=[
 {name:'Shadi Systems',role:'Software Engineer',dates:'Dec 2020 – Apr 2022 · On-site',description:'Developed enterprise healthcare and commercial applications using ASP.NET Core MVC and desktop frameworks. Refactored database queries and EF Core tracking patterns to reduce latency in critical dashboards.',stack:['ASP.NET Core MVC','EF Core','SQL Optimization','Desktop Apps']}
 ];
 const companyArea=document.getElementById('companyChoices');
-const companyPanel=document.createElement('div');companyPanel.id='companyDetail';companyPanel.className='story company-detail is-entering';companyPanel.setAttribute('aria-live','polite');companyPanel.innerHTML='<div class="detail-content"></div>';companyArea.appendChild(companyPanel);
+const companyPanel=document.createElement('div');companyPanel.id='companyDetail';companyPanel.className='story company-detail is-entering';companyPanel.setAttribute('aria-live','polite');companyPanel.setAttribute('role','region');companyPanel.setAttribute('aria-label','Selected work experience details');companyPanel.innerHTML='<div class="detail-content"></div>';companyArea.appendChild(companyPanel);
 const smoothState=new WeakMap();
 function smoothSwap(panel,markup,source){
  const content=panel.querySelector('.detail-content');
@@ -334,7 +289,8 @@ function placeCompanyPanel(i){
  const button=document.querySelector('[data-company="'+i+'"]');
  if(button)button.parentElement.appendChild(companyPanel);
 }
-window.addEventListener('resize',()=>{if(selectedCompany>=0)placeCompanyPanel(selectedCompany)});
+const companyLayout=matchMedia('(max-width:700px)');
+companyLayout.addEventListener('change',()=>{if(selectedCompany>=0)placeCompanyPanel(selectedCompany)});
 function showCompany(i){
  if(i===selectedCompany)return;
  const target=document.querySelector('[data-company="'+i+'"]');
@@ -352,7 +308,7 @@ function showCompany(i){
  }else smoothSwap(companyPanel,markup,target);
  selectedCompany=i;
 }
-document.querySelectorAll('[data-company]').forEach(b=>b.onclick=()=>showCompany(+b.dataset.company));showCompany(0);
+document.querySelectorAll('[data-company]').forEach(b=>{b.setAttribute('aria-controls','companyDetail');b.onclick=()=>showCompany(+b.dataset.company)});showCompany(0);
 const projects=[
 {title:'Meta WhatsApp Integration Portal',text:'Built a .NET Core and Angular enterprise portal supporting templates, interactive buttons and lists. RabbitMQ enables asynchronous communication with Meta WhatsApp Cloud API; deployed on IIS.',stack:['.NET Core','Angular','RabbitMQ','IIS']},
 {title:'Transflo Wallet App',text:'Developed logistics fuel-management APIs to track fuel allocation and real-time load transfers, using .NET Core and AWS Lambda.',stack:['.NET Core','AWS Lambda','Logistics']},
