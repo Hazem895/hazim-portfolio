@@ -319,7 +319,11 @@ section,.hero{background:transparent}
 @media(max-width:1099px){#systemCore{width:100%;opacity:.8}}
 @media(max-width:600px){#systemCore{top:72px;width:100%;height:calc(100dvh - 72px);opacity:.75}header .wrap{padding-right:18px}.challenge,.stat,.story,.contact,.company-detail{background:rgba(8,7,14,.58)!important}}
 @media print{#systemCore{display:none!important}}
-</style></head><body><aside id="systemCore" aria-hidden="true"><canvas id="coreCanvas"></canvas><span id="coreState" hidden></span></aside><canvas id="particles"></canvas><div class="glow" id="glow"></div><header><div class="wrap nav"><div class="brand">HA<span>.</span> / ENGINEERING</div><nav id="mainNav" aria-label="Main navigation"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#challenges">Challenges</a><a href="#education">Education</a><a href="#contact">Contact</a></nav><button class="mobile-menu" id="menuToggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation">☰</button><a class="btn" href="#contact">Let's talk ↗</a></div></header><main class="wrap"><div class="hero"><div><div class="eyebrow">Interactive Resume · Engineering Portfolio</div><h1>Hazim <em>Attia.</em></h1><div class="hero-role">Senior .NET Software Engineer</div><p class="hero-meta">5+ Years of Experience · Backend &amp; Distributed Systems · Egypt</p><p>I build reliable .NET APIs, messaging platforms and enterprise integrations. I take ownership from architecture to delivery and simplify repetitive work through practical automation.</p><p class="hero-signature">Reliable systems. Real impact.</p><div class="actions"><a class="btn primary" href="#experience">Explore my experience ↓</a><a class="btn" id="resumeDownload" href="../Hazim%20Attia%20-%20Senior%20Software%20Engineer.pdf" download="Hazim Attia - Senior Software Engineer.pdf">Download resume ↓</a></div></div><div class="terminal"><div class="termbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><small>hazim@portfolio: ~</small></div><div class="termcontent"><div><span class="prompt">$</span> <span id="typed" class="cmd"></span><span class="blink">▌</span></div><div id="terminalOutput"></div></div></div></div>
+/* Starfield replaces the system core. */
+#particles{opacity:.85;background:radial-gradient(ellipse at 75% 20%,rgba(59,10,107,.12),transparent 65%)}
+.glow{display:none}
+@media print{#particles{display:none!important}}
+</style></head><body><canvas id="particles"></canvas><div class="glow" id="glow"></div><header><div class="wrap nav"><div class="brand">HA<span>.</span> / ENGINEERING</div><nav id="mainNav" aria-label="Main navigation"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#challenges">Challenges</a><a href="#education">Education</a><a href="#contact">Contact</a></nav><button class="mobile-menu" id="menuToggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation">☰</button><a class="btn" href="#contact">Let's talk ↗</a></div></header><main class="wrap"><div class="hero"><div><div class="eyebrow">Interactive Resume · Engineering Portfolio</div><h1>Hazim <em>Attia.</em></h1><div class="hero-role">Senior .NET Software Engineer</div><p class="hero-meta">5+ Years of Experience · Backend &amp; Distributed Systems · Egypt</p><p>I build reliable .NET APIs, messaging platforms and enterprise integrations. I take ownership from architecture to delivery and simplify repetitive work through practical automation.</p><p class="hero-signature">Reliable systems. Real impact.</p><div class="actions"><a class="btn primary" href="#experience">Explore my experience ↓</a><a class="btn" id="resumeDownload" href="../Hazim%20Attia%20-%20Senior%20Software%20Engineer.pdf" download="Hazim Attia - Senior Software Engineer.pdf">Download resume ↓</a></div></div><div class="terminal"><div class="termbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><small>hazim@portfolio: ~</small></div><div class="termcontent"><div><span class="prompt">$</span> <span id="typed" class="cmd"></span><span class="blink">▌</span></div><div id="terminalOutput"></div></div></div></div>
 <section class="reveal"><div class="eyebrow">01 / At a glance</div><h2>Engineering with ownership.</h2><p class="muted">Based in Egypt. Electrical & Electronics Engineering graduate from Menoufia University. Over five years building end-to-end software, spanning user interfaces, APIs, integrations, cloud services and system design.</p><div class="stats"><div class="stat"><strong>5+</strong><small>Years building production software</small></div><div class="stat"><strong>4+</strong><small>Industries I’ve built software for<br><span class="industry-list">Logistics · FinTech · Healthcare · Business Communications</span></small></div><div class="stat"><strong>.NET</strong><small>Backend engineering · APIs · distributed systems</small></div></div></section>
 <section class="reveal"><div class="eyebrow">02 / Technical skills</div><h2>Core technical skills.</h2><div class="skillset"><span class="skill">C#</span><span class="skill">ASP.NET Core</span><span class="skill">EF Core</span><span class="skill">SQL Server</span><span class="skill">REST APIs</span><span class="skill">RabbitMQ</span><span class="skill">Redis</span><span class="skill">Hangfire</span><span class="skill">Clean Architecture</span><span class="skill">Microservices</span><span class="skill">Angular</span><span class="skill">Blazor</span><span class="skill">JavaScript</span><span class="skill">HTML / CSS</span><span class="skill">Docker</span></div></section>
 <section id="experience" class="reveal"><div class="eyebrow">03 / Professional experience</div><h2>Four companies. One evolving craft.</h2><p class="muted">Explore each role and the engineering responsibilities behind it.</p><div class="company-accordion" id="companyChoices"><div class="company-row"><button class="choice active" data-company="0" type="button">Sure Global Tech · 2025–Now</button></div><div class="company-row"><button class="choice" data-company="1" type="button">Transflo · 2023–2024</button></div><div class="company-row"><button class="choice" data-company="2" type="button">Azentio · 2022–2023</button></div><div class="company-row"><button class="choice" data-company="3" type="button">Shadi Systems · 2020–2022</button></div></div></section><section id="projects" class="reveal"><div class="eyebrow">04 / Selected projects</div><h2>Systems I've helped build.</h2><p class="muted">Click a project to open its full case study in a popup.</p><div class="challenge-grid"><button class="challenge" data-project="0"><div class="symbol">◎</div><h3>WhatsApp Portal</h3><p>Messaging and Meta Cloud API</p></button><button class="challenge" data-project="1"><div class="symbol">↗</div><h3>Transflo Wallet</h3><p>Serverless logistics APIs</p></button><button class="challenge" data-project="2"><div class="symbol">◇</div><h3>Securitization</h3><p>Financial microservices</p></button><button class="challenge" data-project="3"><div class="symbol">▤</div><h3>Egyptian e-Invoice</h3><p>Tax authority integration</p></button></div></section><section id="challenges" class="reveal"><div class="eyebrow">05 / Engineering philosophy</div><h2>Engineering is more than completing tickets.</h2><p class="muted">My engineering philosophy: solve the problem, then simplify the work around it. Explore how I approach integrations, performance, reusable systems, and everyday automation.</p><div class="challenge-grid"><button class="challenge" data-challenge="0"><div class="symbol">↗</div><h3>Complex Integrations</h3><p>How do you own a WhatsApp integration end to end?</p></button><button class="challenge" data-challenge="1"><div class="symbol">◷</div><h3>Slow Requests</h3><p>What happens when an Excel import takes too long?</p></button><button class="challenge" data-challenge="2"><div class="symbol">◇</div><h3>Maintainable Systems</h3><p>How do you design components for reuse and growth?</p></button><button class="challenge" data-challenge="3"><div class="symbol">⚙</div><h3>Automating Routine Work</h3><p>Why repeat a manual task when code can make it simpler?</p></button></div><div id="challengeResult" class="result philosophy-result" aria-live="polite"></div></section>
@@ -495,7 +499,52 @@ challenge(-1);
 
 const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);e.target.querySelectorAll('[data-count]').forEach(el=>{const goal=+el.dataset.count;let n=0;const tick=()=>{n++;el.textContent=n===goal&&goal===6?'~6':n;if(n<goal)setTimeout(tick,130)};tick()})}}),{threshold:.13});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));if(matchMedia('(pointer:coarse)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));}
 const commands=[["whoami",["Hazim Attia","Senior Software Engineer"]],["cat focus.txt",["Full-Stack Development • System Design • Cloud & Integrations"]],["echo $STATUS",["Available for engineering conversations ✓"]]];let ci=0,letter=0;function type(){const [cmd,output]=commands[ci];document.getElementById('typed').textContent=cmd.slice(0,letter++);if(letter<=cmd.length){setTimeout(type,55);return}const line=document.createElement('div');line.className='out';line.textContent=output.join(' | ');document.getElementById('terminalOutput').appendChild(line);setTimeout(()=>{ci=(ci+1)%commands.length;letter=0;if(ci===0)document.getElementById('terminalOutput').innerHTML='';type()},2200)}type();
-const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');let particles=[];function resize(){canvas.width=innerWidth;canvas.height=innerHeight;particles=Array.from({length:Math.min(85,Math.floor(innerWidth/17))},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5+.5,v:Math.random()*.45+.1}))}addEventListener('resize',resize);resize();let frame=0;function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#00e5ff';for(const p of particles){p.y-=p.v;if(p.y<0)p.y=canvas.height;ctx.globalAlpha=.2+p.r*.15;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()}ctx.globalAlpha=1;requestAnimationFrame(animate)}if(!matchMedia('(prefers-reduced-motion: reduce)').matches)animate();addEventListener('pointermove',e=>{const g=document.getElementById('glow');g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'});
+// A quiet, layered starfield; scroll velocity adds brief directional trails.
+const starCanvas=document.getElementById('particles'),starCtx=starCanvas.getContext('2d');
+const starMotion=matchMedia('(prefers-reduced-motion: reduce)');
+let stars=[],starWidth=0,starHeight=0,starFrame=0,starTime=0,starScroll=scrollY,starSpeed=0,starLastScroll=performance.now();
+function resizeStars(){
+ starWidth=innerWidth;starHeight=innerHeight;
+ const ratio=Math.min(devicePixelRatio||1,2);
+ starCanvas.width=Math.round(starWidth*ratio);starCanvas.height=Math.round(starHeight*ratio);
+ starCtx.setTransform(ratio,0,0,ratio,0,0);
+ stars=Array.from({length:Math.min(190,Math.max(65,Math.round(starWidth*starHeight/8500)))},()=>({
+ x:Math.random()*starWidth,y:Math.random()*starHeight,z:.25+Math.random()*.75,phase:Math.random()*Math.PI*2
+ }));
+ requestStars();
+}
+function drawStars(now){
+ starFrame=0;
+ if(document.hidden)return;
+ const dt=Math.min(.05,Math.max(0,(now-(starTime||now))/1000));starTime=now;
+ starSpeed*=Math.exp(-dt*6);
+ starCtx.clearRect(0,0,starWidth,starHeight);
+ for(const star of stars){
+ const motion=starMotion.matches?0:starSpeed*star.z;
+ const dy=starMotion.matches?0:(-4*star.z-motion)*dt;
+ if(!starMotion.matches){star.x+=1.6*star.z*dt;star.y+=dy;}
+ star.x=(star.x+starWidth)%starWidth;star.y=(star.y+starHeight)%starHeight;
+ const alpha=.24+star.z*.46+(starMotion.matches?0:Math.sin(now*.00045+star.phase)*.07);
+ const trail=starMotion.matches?0:Math.min(28,Math.abs(motion)*.022);
+ if(trail>1){
+ starCtx.strokeStyle='rgba(176,220,244,'+(alpha*.4)+')';starCtx.lineWidth=.5+star.z*.5;
+ starCtx.beginPath();starCtx.moveTo(star.x,star.y);starCtx.lineTo(star.x,star.y+Math.sign(motion)*trail);starCtx.stroke();
+ }
+ starCtx.fillStyle='rgba(220,233,255,'+alpha+')';
+ starCtx.beginPath();starCtx.arc(star.x,star.y,.45+star.z*.85,0,Math.PI*2);starCtx.fill();
+ }
+ if(!starMotion.matches)requestStars();
+}
+function requestStars(){if(!starFrame&&!document.hidden)starFrame=requestAnimationFrame(drawStars);}
+addEventListener('scroll',()=>{
+ const now=performance.now(),elapsed=Math.max(16,now-starLastScroll),delta=scrollY-starScroll;
+ starSpeed=Math.max(-1250,Math.min(1250,starSpeed*.35+delta/elapsed*1000*.65));
+ starScroll=scrollY;starLastScroll=now;requestStars();
+},{passive:true});
+addEventListener('resize',resizeStars,{passive:true});
+starMotion.addEventListener('change',()=>{starSpeed=0;starTime=0;requestStars();});
+document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(starFrame);starFrame=0;starTime=0;starSpeed=0;starScroll=scrollY;requestStars();});
+resizeStars();
 const menuToggle=document.getElementById('menuToggle');const mainNav=document.getElementById('mainNav');menuToggle.addEventListener('click',()=>{const open=mainNav.classList.toggle('nav-open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.textContent=open?'✕':'☰';});mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mainNav.classList.remove('nav-open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰';}));
 document.getElementById('emailBtn').onclick=()=>location.href='mailto:hazemattya007@gmail.com';document.getElementById('whatsappBtn').onclick=()=>window.open('https://wa.me/201067808250','_blank','noopener');document.getElementById('linkedinBtn').onclick=()=>window.open('https://www.linkedin.com/in/hazimattia007','_blank','noopener');
 
@@ -518,68 +567,4 @@ document.getElementById('resumeDownload').addEventListener('click',async e=>{
   document.body.appendChild(a);a.click();a.remove();
  }
 });
-</script><script>
-(()=>{'use strict';
- const canvas=document.getElementById('coreCanvas'),context=canvas.getContext('2d');
- if(!context)return;
- const label=document.getElementById('coreState');
- const motion=matchMedia('(prefers-reduced-motion: reduce)');
- const mobile=matchMedia('(max-width:600px)');
- let width=0,height=0,frame=0,lastLabel='',visible=!document.hidden;
- const clamp=x=>Math.max(0,Math.min(1,x));
- const smooth=x=>{x=clamp(x);return x*x*(3-2*x)};
- const points=Array.from({length:120},(_,i)=>{const y=1-2*(i+.5)/120,r=Math.sqrt(1-y*y),a=i*Math.PI*(3-Math.sqrt(5));return [Math.cos(a)*r,y,Math.sin(a)*r];});
- function resize(){const box=canvas.getBoundingClientRect();width=box.width;height=box.height;
- const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);context.setTransform(dpr,0,0,dpr,0,0);request();}
- function progress(id){const element=document.getElementById(id);if(!element)return 0;const start=element.getBoundingClientRect().top+scrollY-innerHeight*.8;const end=Math.min(start+innerHeight*.65,document.documentElement.scrollHeight-innerHeight);return smooth((scrollY-start)/Math.max(1,end-start));}
-
- function draw(){
- frame=0;if(!visible)return;context.clearRect(0,0,width,height);
- const experience=motion.matches?0:progress('experience'),projects=motion.matches?0:progress('projects'),contact=motion.matches?0:progress('contact');
- const scroll=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight);
- const spread=(experience*.12+projects*.18)*(1-contact),angle=.45+(motion.matches?0:scroll*Math.PI*2.3);
- const scale=Math.min(width*.32,height*.29),cy=height*.48;
- function project(v){const [x,y,z]=v,a=x*Math.cos(angle)+z*Math.sin(angle),b=-x*Math.sin(angle)+z*Math.cos(angle),ry=y*.949+b*.315,rz=-y*.315+b*.949,p=4/(4+rz);return [width/2+a*scale*p,cy+ry*scale*p,rz];}
- const glow=context.createRadialGradient(width/2,cy,0,width/2,cy,scale*1.8);
- glow.addColorStop(0,'#00e5ff24');glow.addColorStop(.3,'#722abe2b');glow.addColorStop(1,'#3b0a6b00');context.fillStyle=glow;context.fillRect(0,0,width,height);
- const nodes=points.map((p,i)=>project(p.map(v=>v*(1+spread*(.65+.35*Math.sin(i*2.4))))));
- context.lineWidth=.7;
- for(let i=0;i<points.length;i++)for(let j=i+1;j<points.length;j++){
- if(points[i].reduce((n,v,k)=>n+(v-points[j][k])**2,0)>.17)continue;
- const a=nodes[i],b=nodes[j],alpha=.08+.2*clamp((2-a[2]-b[2])/4);
- context.strokeStyle='rgba(0,229,255,'+alpha+')';context.beginPath();context.moveTo(a[0],a[1]);context.lineTo(b[0],b[1]);context.stroke();
- if((i+j)%23===0){const t=motion.matches?.5:(scroll*4+i*.071)%1;context.fillStyle='#a4f4ffaa';context.beginPath();context.arc(a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,1.5,0,Math.PI*2);context.fill();}
- }
- nodes.sort((a,b)=>b[2]-a[2]).forEach(p=>{const f=clamp((1-p[2])/2);context.fillStyle='rgba(122,234,255,'+(.15+f*.55)+')';context.beginPath();context.arc(p[0],p[1],.7+f*1.1,0,Math.PI*2);context.fill();});
- for(let ring=0;ring<2;ring++){context.beginPath();for(let k=0;k<=120;k++){const a=k/120*Math.PI*2,r=1.17+ring*.12,lean=ring===0?.65:-.7,p=project([Math.cos(a)*r,Math.sin(a)*r*Math.cos(lean),Math.sin(a)*r*Math.sin(lean)]);k?context.lineTo(p[0],p[1]):context.moveTo(p[0],p[1]);}context.strokeStyle=ring?'#a866e852':'#00e5ff3b';context.lineWidth=1;context.stroke();}
- const core=context.createRadialGradient(width/2,cy,0,width/2,cy,scale*.22);
- core.addColorStop(0,'#d0fcffcc');core.addColorStop(.12,'#00e5ff80');core.addColorStop(.48,'#722abe30');core.addColorStop(1,'#00e5ff00');
- context.fillStyle=core;context.beginPath();context.arc(width/2,cy,scale*.22,0,Math.PI*2);context.fill();
- // Fade decoration under actual text lines, including stack labels.
- context.save();context.globalCompositeOperation='destination-out';
- context.fillStyle='rgba(0,0,0,.88)';
- const canvasTop=canvas.getBoundingClientRect().top;
- document.querySelectorAll('.wrap h1,.wrap h2,.wrap h3,.wrap p,.wrap .eyebrow,.wrap .tag,.wrap strong,.wrap .btn,.wrap .choice,.wrap .muted').forEach(el=>{
-  const bounds=el.getBoundingClientRect();
-  if(bounds.bottom<canvasTop||bounds.top>innerHeight)return;
-  const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
-  let node;while((node=walker.nextNode())){
-   if(!node.textContent.trim())continue;
-   const range=document.createRange();range.selectNodeContents(node);
-   for(const rect of range.getClientRects()){
-    if(rect.width<1||rect.height<1)continue;
-    context.beginPath();context.roundRect(rect.left-5,rect.top-canvasTop-3,rect.width+10,rect.height+6,5);context.fill();
-   }
-  }
- });
- context.restore();
-
- const state=contact>.6?'CONNECTED':projects>.6?'DISTRIBUTED':experience>.6?'UNDER THE HOOD':'SYSTEM CORE';
- if(state!==lastLabel){label.textContent=state;lastLabel=state;}
- }
- function request(){if(!frame&&visible)frame=requestAnimationFrame(draw);}
- addEventListener('scroll',request,{passive:true});addEventListener('resize',resize,{passive:true});
- motion.addEventListener('change',request);
- document.addEventListener('visibilitychange',()=>{visible=!document.hidden;if(visible)request();else{cancelAnimationFrame(frame);frame=0;}});
- resize();
-})();</script></body></html>
+</script></body></html>
