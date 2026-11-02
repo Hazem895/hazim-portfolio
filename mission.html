@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الرسالة اللي ما وصلتش | Hazim Attia</title>
+<style>
+:root{color-scheme:dark;--bg:#091019;--panel:#101d29;--ink:#eff7fc;--muted:#a9bfcc;--amber:#ffc77b;--cyan:#6cf2d5}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% 5%,#163749,var(--bg) 62%);color:var(--ink);font:16px/1.7 system-ui,sans-serif;min-height:100dvh}main{max-width:960px;margin:auto;padding:24px clamp(16px,5vw,54px) 36px}header,.row,.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}header{justify-content:space-between;border-bottom:1px solid #355164;padding-bottom:15px}a{color:var(--cyan)}button,.action{font:inherit;color:inherit;border:1px solid #476174;border-radius:10px;padding:10px 15px;background:#182d3b;cursor:pointer;text-decoration:none}button:hover,.action:hover{border-color:var(--cyan)}:focus-visible{outline:3px solid var(--amber);outline-offset:4px}.primary{color:#081c1a;background:var(--cyan);border-color:var(--cyan);font-weight:750}.tag{color:var(--cyan);font:700 12px/1.6 monospace;letter-spacing:.1em}.scene{margin-top:25px;padding:clamp(18px,4vw,36px);border:1px solid #355164;border-radius:22px;background:linear-gradient(150deg,#172d3a,var(--panel) 65%)}h1{font-size:clamp(29px,6vw,54px);line-height:1.2;margin:9px 0 12px}h2{margin:4px 0}p{max-width:65ch;color:var(--muted)}.map{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:23px 0;direction:ltr}.node{display:grid;place-content:center;min-height:76px;border:1px dashed #466478;border-radius:12px;text-align:center;font:700 clamp(10px,2.5vw,15px) monospace;padding:7px;background:#0b1722}.node.live{border:1px solid var(--cyan);color:var(--cyan);box-shadow:0 0 24px #6cf2d528}.node.wait{border-color:var(--amber);color:var(--amber)}.route{margin:12px 0;color:var(--cyan);direction:ltr;text-align:center;min-height:30px;font-family:monospace}.feedback{min-height:28px;color:var(--amber)}.intro{margin-top:20px;border-top:1px solid #355164;padding-top:15px}.intro summary{cursor:pointer;color:var(--cyan)}audio{display:block;width:min(100%,380px);margin-top:12px}[hidden]{display:none!important}.meter{font:700 13px monospace;color:var(--amber)}.choices{display:flex;flex-wrap:wrap;gap:8px}.choices button:disabled{opacity:.45;cursor:default}small{color:var(--muted)}
+</style>
+<main>
+<header><div><strong>Hazim Attia</strong><br><span class="tag" dir="ltr">ENGINEERING MISSIONS</span></div><a href="./">View portfolio ↗</a></header>
+<section class="scene" aria-labelledby="title">
+<div class="row"><span class="tag" dir="ltr">CONTROL ROOM</span><span class="meter" id="meter">00 / 02</span></div>
+<h1 id="title" tabindex="-1">الرسالة اللي ما وصلتش</h1>
+<p id="brief">الرسالة خرجت من عندنا. ليه ما وصلتش؟ افتح سجل الإرسال وشوف وقفت فين.</p>
+<div class="map" id="map" aria-hidden="true"></div>
+<div class="route" id="route"></div>
+<div id="choices" class="choices"></div>
+<div class="feedback" id="feedback" role="status"></div>
+<div class="actions" id="actions"></div>
+<details class="intro" id="intro" open>
+<summary>مين حازم؟ · Meet Hazim</summary>
+<p>أنا حازم عطية، Senior Software Engineer. بشتغل على أنظمة الرسائل والتكاملات باستخدام ‎.NET وAngular. في اللعبة دي هتجرّب بإيدك فكرتين من شغلي: إزاي نبعت الرسائل، وإزاي نخلي معالجة الملفات الكبيرة متعطّلش الطلبات.</p>
+<audio id="voice" controls preload="none" hidden></audio>
+<label>جرّب تسجيلك على الجهاز <input id="recording" type="file" accept="audio/*,.m4a,.mp3,.wav"></label>
+<br><small>التسجيل اللي تختاره هنا بيتشغّل محليًا على جهازك.</small>
+</details>
+</section>
+</main>
+<script>
+const title=document.querySelector('#title'),brief=document.querySelector('#brief');
+const map=document.querySelector('#map'),route=document.querySelector('#route');
+const choices=document.querySelector('#choices'),actions=document.querySelector('#actions');
+const feedback=document.querySelector('#feedback'),meter=document.querySelector('#meter');
+const intro=document.querySelector('#intro');
+const voice=document.querySelector('#voice');
+let localRecording;
+document.querySelector('#recording').addEventListener('change',event=>{
+  const file=event.target.files[0];
+  if(!file)return;
+  if(localRecording)URL.revokeObjectURL(localRecording);
+  localRecording=URL.createObjectURL(file);
+  voice.src=localRecording;
+  voice.hidden=false;
+});
+function button(parent,label,handler,primary=false){
+  const element=document.createElement('button');
+  element.textContent=label;
+  if(primary)element.className='primary';
+  element.onclick=handler;
+  parent.append(element);
+  return element;
+}
+function nodes(labels,states=[]){
+  map.replaceChildren(...labels.map((label,index)=>{
+    const node=document.createElement('div');
+    node.className='node '+(states[index]||'');
+    node.textContent=label;
+    return node;
+  }));
+}
+function screen(heading,description,progress){
+  title.textContent=heading;
+  brief.textContent=description;
+  meter.textContent=progress+' / 02';
+  choices.replaceChildren();
+  actions.replaceChildren();
+  feedback.textContent='';
+  route.textContent='';
+}
+function start(){
+  screen('الرسالة اللي ما وصلتش','الرسالة خرجت من عندنا. ليه ما وصلتش؟ افتح سجل الإرسال وشوف وقفت فين.','00');
+  nodes(['MESSAGE','ROUTE','DESTINATION'],['live','wait']);
+  button(actions,'افتح سجل الإرسال ↗',messageMission,true);
+  intro.open=true;
+}
+function messageMission(){
+  intro.open=false;
+  screen('٠١ · وصّل الرسالة','الرسالة خرجت من الـAPI. اختار المكوّن اللي يستقبلها لحد ما خدمة الإرسال تبقى جاهزة، وبعده اختار الوجهة.','00');
+  title.focus();
+  nodes(['API','?','?'],['live','wait']);
+  const sequence=['Queue','Meta API'];
+  const selected=[];
+  const buttons=[];
+  for(const label of ['Meta API','Queue','Excel Worker']){
+    buttons.push(button(choices,label,()=>{
+      if(label!==sequence[selected.length]){
+        feedback.textContent=selected.length?'اختار بوابة الإرسال اللي الطابور هيسلّم لها الرسالة.':'محتاج مكان يحتفظ بالرسالة لحد ما خدمة الإرسال تستلمها.';
+        return;
+      }
+      selected.push(label);
+      route.textContent=['API',...selected].join(' → ');
+      nodes(['API',selected[0]||'?',selected[1]||'?'],['live','live',selected.length===2?'live':'wait']);
+      buttons.find(item=>item.textContent===label).disabled=true;
+      if(selected.length===2){
+        feedback.textContent='المسار اشتغل. ده مثال من شغلي على تكامل WhatsApp مع Meta.';
+        meter.textContent='01 / 02';
+        for(const item of buttons)item.disabled=true;
+        button(actions,'افتح تنبيه الطلبات ↗',workerMission,true).focus();
+      }else feedback.textContent='الرسالة دخلت الطابور. هتروح فين بعد كده؟';
+    }));
+  }
+}
+function workerMission(){
+  screen('٠٢ · الطلبات واقفة','ملف Excel كبير واخد وقت طويل، والمستخدم مستني الرد. فين تحط معالجة الملف؟','01');
+  title.focus();
+  nodes(['REQUEST','EXCEL IMPORT','RESPONSE'],['live','wait']);
+  button(choices,'داخل نفس الطلب',()=>{
+    feedback.textContent='المستخدم لسه هيستنى لحد ما الملف يخلص. جرّب مسار يخلّي الرد يرجع بدري.';
+  });
+  button(choices,'Background Worker',()=>{
+    choices.replaceChildren();
+    nodes(['REQUEST','BACKGROUND WORKER','RESPONSE'],['live','live','live']);
+    route.textContent='Request accepted → Processing continues';
+    feedback.textContent='الطلب رجع بسرعة والملف بيتعالج في الخلفية. دي مشكلة تعاملت معاها في الشغل.';
+    meter.textContent='02 / 02';
+    button(actions,'شوف النتيجة ↗',finish,true).focus();
+  });
+}
+function finish(){
+  screen('الرسالة وصلت','وصلت مسار الرسائل، وفصلت معالجة Excel عن الطلب. دول مثالين على شغلي في التكاملات ومعالجة المهام في الخلفية.','02');
+  title.focus();
+  nodes(['MESSAGE SENT','WORKER ONLINE','SYSTEM READY'],['live','live','live']);
+  const links=[['شوف المشاريع','./play/'],['Download resume','./Hazim%20Attia%20-%20Senior%20Software%20Engineer.pdf']];
+  for(const [label,href] of links){
+    const link=document.createElement('a');
+    link.className='action';
+    link.href=href;
+    link.textContent=label;
+    if(label==='Download resume')link.download='Hazim Attia - Senior Software Engineer.pdf';
+    actions.append(link);
+  }
+  button(actions,'العب تاني',()=>{start();title.focus();});
+}
+start();
+</script>
