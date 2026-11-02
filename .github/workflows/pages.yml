@@ -1,7 +1,11 @@
 name: Deploy portfolio themes to GitHub Pages
 on:
   push:
-    branches: [main, luxurious-version, midnight-blue, emerald-green, royal-purple, burgundy-rose, slate-silver, carbon-red]
+    branches: [main]
+  workflow_run:
+    workflows: ["Portfolio theme updated"]
+    types: [completed]
+    branches: [luxurious-version, midnight-blue, emerald-green, royal-purple, burgundy-rose, slate-silver, carbon-red]
   workflow_dispatch:
 permissions:
   contents: read
