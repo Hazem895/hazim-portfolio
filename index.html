@@ -283,7 +283,62 @@ header{background:#060606ed;border-bottom-color:#ffffff12}
 
 /* Recruiter-first hero */
 .hero h1{font-size:clamp(56px,7vw,98px);line-height:1.02;margin:16px 0 12px;letter-spacing:-.065em}.hero-role{font-size:clamp(23px,2.8vw,36px);font-weight:750;color:#cacaca}.hero-meta{font-size:14px!important;color:#bababa!important;font-weight:600}.hero-signature{font-size:15px!important;font-weight:700;color:#d41514!important;margin-top:18px}.hero .actions{margin-top:23px}@media(max-width:700px){.hero{padding-top:32px;padding-bottom:44px;gap:24px}.hero h1{font-size:clamp(52px,12vw,76px)}.hero-role{font-size:clamp(23px,6vw,30px)}.hero p{font-size:16px;line-height:1.6}.hero .actions .btn{flex:1 1 190px}.terminal{display:none}}
-:root{--brown:#262626;--cream:#CDCBCA;--gold:#D41514;--bg:#080808;--panel:#151515;--line:#454545;--text:#CDCBCA}.btn.primary{color:#fff}.hero p,.muted{color:#CDCBCA}</style></head><body><canvas id="particles"></canvas><div class="glow" id="glow"></div><header><div class="wrap nav"><div class="brand">HA<span>.</span> / ENGINEERING</div><nav id="mainNav" aria-label="Main navigation"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#challenges">Challenges</a><a href="#education">Education</a><a href="#contact">Contact</a></nav><button class="mobile-menu" id="menuToggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation">☰</button><a class="btn" href="#contact">Let's talk ↗</a></div></header><main class="wrap"><div class="hero"><div><div class="eyebrow">Interactive Resume · Engineering Portfolio</div><h1>Hazim <em>Attia.</em></h1><div class="hero-role">Senior .NET Software Engineer</div><p class="hero-meta">5+ Years of Experience · Backend &amp; Distributed Systems · Egypt</p><p>I build reliable .NET APIs, messaging platforms and enterprise integrations. I take ownership from architecture to delivery and simplify repetitive work through practical automation.</p><p class="hero-signature">Reliable systems. Real impact.</p><div class="actions"><a class="btn primary" href="#experience">Explore my experience ↓</a><a class="btn" id="resumeDownload" href="Hazim%20Attia%20-%20Senior%20Software%20Engineer.pdf" download="Hazim Attia - Senior Software Engineer.pdf">Download resume ↓</a></div></div><div class="terminal"><div class="termbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><small>hazim@portfolio: ~</small></div><div class="termcontent"><div><span class="prompt">$</span> <span id="typed" class="cmd"></span><span class="blink">▌</span></div><div id="terminalOutput"></div></div></div></div>
+:root{--brown:#262626;--cream:#CDCBCA;--gold:#D41514;--bg:#080808;--panel:#151515;--line:#454545;--text:#CDCBCA}.btn.primary{color:#fff}.hero p,.muted{color:#CDCBCA}
+/* Carbon Red: restrained accent, neutral surfaces, clear reading hierarchy. */
+:root{--bg:#080808;--panel:#141414;--line:#2c2c2c;--text:#f2f1f0;--cream:#CDCBCA;--gold:#D41514;--brown:#242424}
+body{background:#080808;color:var(--text)}
+header{background:#080808ed;border-bottom-color:#ffffff0d}
+.brand span{color:#ef5350}
+nav,.hero-role{color:#CDCBCA}
+.hero h1,.hero h1 em{color:#f5f4f3}
+.hero p,.muted,.story p,.result p,.modal-summary,.modal-section p,.challenge p,.company-detail p,.education-desc{color:#b9b8b7}
+.hero-meta{color:#969493!important}.hero-signature{color:#CDCBCA!important}
+.eyebrow,.prompt,.modal-section h3,.education-kicker{color:#ef7773}
+.glow{background:radial-gradient(circle,#d4151408,transparent 65%);opacity:.45}
+#particles{opacity:.16}
+.terminal,.stat,.education-card,.company-detail,.result,.story,.challenge,.skill,.tag,.choice,.node,.modal-flow,.flow-node,.philosophy-result{background:#141414;border-color:#2c2c2c}
+.terminal{box-shadow:0 24px 70px #0005}
+.termbar{background:#1b1b1b;border-bottom-color:#2c2c2c}
+.termbar small,.modal-counter,.nodeinfo{color:#aaa7a5}
+.cmd,.flow-node,.node,.result h3,.challenge-inline-detail h3{color:#e7e5e3}
+.out{color:#afbfb2}
+.stat strong{color:#f0eeec}
+.stat small,.challenge[data-project]::after,.tag,.node small{color:#aaa7a5}
+.challenge .symbol{color:#CDCBCA}
+.challenge:hover,.challenge.active{background:#1b1b1b;border-color:#62605e;box-shadow:0 12px 30px #0003}
+.btn{background:#1b1b1b;border-color:#383838;color:#e7e5e3;box-shadow:none}
+.btn:hover{background:#252525;border-color:#77716f;box-shadow:none}
+.btn.primary{background:#D41514;border-color:#D41514;color:#fff}
+.btn.primary:hover{background:#b91212;border-color:#b91212;box-shadow:0 6px 24px #d4151420}
+.company-row>.choice,.choice{background:#121212;border-color:#2c2c2c;color:#bdbab7}
+.company-row>.choice.active,.choice.active,.choice:hover{background:#202020;border-color:#5b5552;color:#f4f2f0;box-shadow:inset 3px 0 #D41514}
+.company-detail{background:#161616;border-color:#353230}
+.company-detail::before{background:#D41514;width:2px}
+.education-card{border-color:#2c2c2c}.education-year{background:#1c1c1c;border-color:#303030}
+.education-year strong{color:#f0eeec}.education-year-label{color:#95918f}
+.education-university{color:#CDCBCA}
+.skill,.tag{background:#191919;border-color:#303030;color:#CDCBCA}
+.skill:hover{background:#282828;color:#fff}
+.contact{background:linear-gradient(130deg,#1c1c1c,#121212);border-color:#383330}
+.contact p{color:#b9b8b7}
+.diagram{background:radial-gradient(circle at 50% 50%,#242121,#101010 65%);border-color:#343130}
+.diagram path{stroke:#77716f}.node:hover,.node.selected{background:#302625;border-color:#ba514d;color:#fff}
+.project-modal{background:#080808df}.modal-panel{background:linear-gradient(145deg,#202020,#111 70%);border-color:#45403d;scrollbar-color:#655f5a #171717}
+.modal-close,.mobile-menu{background:#242424;border-color:#45403d;color:#e7e5e3}
+.modal-close:hover{background:#38302e}
+.modal-flow{background:#141414}.flow-node{background:#202020;border-color:#45403d}
+.flow-arrow{color:#ef7773}
+#challenges .challenge-inline-detail{background:#171717;border-color:#393330;color:#CDCBCA}
+#challenges .challenge-inline-detail p{color:#b9b8b7}
+nav#mainNav.nav-open{background:#151515;border-color:#333}
+nav#mainNav a:hover{background:#252525}
+section{border-top-color:#ffffff0c}
+footer{color:#95918f}
+:focus-visible,button:focus-visible,a:focus-visible{outline-color:#CDCBCA}
+@media(max-width:700px){.education-year{background:#1c1c1c;border-bottom-color:#303030}}
+@media print{body{background:#fff;color:#111}.hero h1,.hero h1 em,.hero-role,.stat strong{color:#111}.hero p,.muted,.story p,.company-detail p{color:#333}}
+
+</style></head><body><canvas id="particles"></canvas><div class="glow" id="glow"></div><header><div class="wrap nav"><div class="brand">HA<span>.</span> / ENGINEERING</div><nav id="mainNav" aria-label="Main navigation"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#challenges">Challenges</a><a href="#education">Education</a><a href="#contact">Contact</a></nav><button class="mobile-menu" id="menuToggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation">☰</button><a class="btn" href="#contact">Let's talk ↗</a></div></header><main class="wrap"><div class="hero"><div><div class="eyebrow">Interactive Resume · Engineering Portfolio</div><h1>Hazim <em>Attia.</em></h1><div class="hero-role">Senior .NET Software Engineer</div><p class="hero-meta">5+ Years of Experience · Backend &amp; Distributed Systems · Egypt</p><p>I build reliable .NET APIs, messaging platforms and enterprise integrations. I take ownership from architecture to delivery and simplify repetitive work through practical automation.</p><p class="hero-signature">Reliable systems. Real impact.</p><div class="actions"><a class="btn primary" href="#experience">Explore my experience ↓</a><a class="btn" id="resumeDownload" href="Hazim%20Attia%20-%20Senior%20Software%20Engineer.pdf" download="Hazim Attia - Senior Software Engineer.pdf">Download resume ↓</a></div></div><div class="terminal"><div class="termbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><small>hazim@portfolio: ~</small></div><div class="termcontent"><div><span class="prompt">$</span> <span id="typed" class="cmd"></span><span class="blink">▌</span></div><div id="terminalOutput"></div></div></div></div>
 <section class="reveal"><div class="eyebrow">01 / At a glance</div><h2>Engineering with ownership.</h2><p class="muted">Based in Egypt. Electrical & Electronics Engineering graduate from Menoufia University. Over five years building end-to-end software, spanning user interfaces, APIs, integrations, cloud services and system design.</p><div class="stats"><div class="stat"><strong>5+</strong><small>Years building production software</small></div><div class="stat"><strong>4+</strong><small>Industries I’ve built software for<br><span class="industry-list">Logistics · FinTech · Healthcare · Business Communications</span></small></div><div class="stat"><strong>.NET</strong><small>Backend engineering · APIs · distributed systems</small></div></div></section>
 <section class="reveal"><div class="eyebrow">02 / Technical skills</div><h2>Core technical skills.</h2><div class="skillset"><span class="skill">C#</span><span class="skill">ASP.NET Core</span><span class="skill">EF Core</span><span class="skill">SQL Server</span><span class="skill">REST APIs</span><span class="skill">RabbitMQ</span><span class="skill">Redis</span><span class="skill">Hangfire</span><span class="skill">Clean Architecture</span><span class="skill">Microservices</span><span class="skill">Angular</span><span class="skill">Blazor</span><span class="skill">JavaScript</span><span class="skill">HTML / CSS</span><span class="skill">Docker</span></div></section>
 <section id="experience" class="reveal"><div class="eyebrow">03 / Professional experience</div><h2>Four companies. One evolving craft.</h2><p class="muted">Explore each role and the engineering responsibilities behind it.</p><div class="company-accordion" id="companyChoices"><div class="company-row"><button class="choice active" data-company="0" type="button">Sure Global Tech · 2025–Now</button></div><div class="company-row"><button class="choice" data-company="1" type="button">Transflo · 2023–2024</button></div><div class="company-row"><button class="choice" data-company="2" type="button">Azentio · 2022–2023</button></div><div class="company-row"><button class="choice" data-company="3" type="button">Shadi Systems · 2020–2022</button></div></div></section><section id="projects" class="reveal"><div class="eyebrow">04 / Selected projects</div><h2>Systems I've helped build.</h2><p class="muted">Click a project to open its full case study in a popup.</p><div class="challenge-grid"><button class="challenge" data-project="0"><div class="symbol">◎</div><h3>WhatsApp Portal</h3><p>Messaging and Meta Cloud API</p></button><button class="challenge" data-project="1"><div class="symbol">↗</div><h3>Transflo Wallet</h3><p>Serverless logistics APIs</p></button><button class="challenge" data-project="2"><div class="symbol">◇</div><h3>Securitization</h3><p>Financial microservices</p></button><button class="challenge" data-project="3"><div class="symbol">▤</div><h3>Egyptian e-Invoice</h3><p>Tax authority integration</p></button></div></section><section id="challenges" class="reveal"><div class="eyebrow">05 / Engineering philosophy</div><h2>Engineering is more than completing tickets.</h2><p class="muted">My engineering philosophy: solve the problem, then simplify the work around it. Explore how I approach integrations, performance, reusable systems, and everyday automation.</p><div class="challenge-grid"><button class="challenge" data-challenge="0"><div class="symbol">↗</div><h3>Complex Integrations</h3><p>How do you own a WhatsApp integration end to end?</p></button><button class="challenge" data-challenge="1"><div class="symbol">◷</div><h3>Slow Requests</h3><p>What happens when an Excel import takes too long?</p></button><button class="challenge" data-challenge="2"><div class="symbol">◇</div><h3>Maintainable Systems</h3><p>How do you design components for reuse and growth?</p></button><button class="challenge" data-challenge="3"><div class="symbol">⚙</div><h3>Automating Routine Work</h3><p>Why repeat a manual task when code can make it simpler?</p></button></div><div id="challengeResult" class="result philosophy-result" aria-live="polite"></div></section>
