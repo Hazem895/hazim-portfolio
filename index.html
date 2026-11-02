@@ -301,8 +301,8 @@ body{background:#050505}header{background:#050505ed}
 .core-caption{position:absolute;top:calc(50% + 140px);width:100%;text-align:center;font:10px/1.8 ui-monospace,monospace;letter-spacing:2px;color:#aaa0bd}
 .core-caption span{display:block;color:#00e5ff;font-size:9px}
 @media(min-width:1100px){body>.wrap{margin-left:auto;margin-right:220px;max-width:1200px}header .wrap{padding-right:240px;max-width:1420px}}
-@media(max-width:1099px){#systemCore{width:150px;opacity:.22;z-index:0}.core-caption{display:none}}
-@media(max-width:600px){#systemCore{width:120px;top:80px;height:240px;opacity:.18}}
+@media(max-width:1099px){#systemCore{width:210px;opacity:.95;z-index:0}.core-caption{display:none}}
+@media(max-width:600px){#systemCore{width:190px;top:90px;height:calc(100dvh - 120px);opacity:.85}}
 @media print{#systemCore{display:none!important}body>.wrap{margin:auto}}
 </style></head><body><aside id="systemCore" aria-hidden="true"><canvas id="coreCanvas"></canvas><div class="core-caption">HA / ENGINEERING<span id="coreState">SYSTEM CORE</span></div></aside><canvas id="particles"></canvas><div class="glow" id="glow"></div><header><div class="wrap nav"><div class="brand">HA<span>.</span> / ENGINEERING</div><nav id="mainNav" aria-label="Main navigation"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#challenges">Challenges</a><a href="#education">Education</a><a href="#contact">Contact</a></nav><button class="mobile-menu" id="menuToggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation">☰</button><a class="btn" href="#contact">Let's talk ↗</a></div></header><main class="wrap"><div class="hero"><div><div class="eyebrow">Interactive Resume · Engineering Portfolio</div><h1>Hazim <em>Attia.</em></h1><div class="hero-role">Senior .NET Software Engineer</div><p class="hero-meta">5+ Years of Experience · Backend &amp; Distributed Systems · Egypt</p><p>I build reliable .NET APIs, messaging platforms and enterprise integrations. I take ownership from architecture to delivery and simplify repetitive work through practical automation.</p><p class="hero-signature">Reliable systems. Real impact.</p><div class="actions"><a class="btn primary" href="#experience">Explore my experience ↓</a><a class="btn" id="resumeDownload" href="Hazim%20Attia%20-%20Senior%20Software%20Engineer.pdf" download="Hazim Attia - Senior Software Engineer.pdf">Download resume ↓</a></div></div><div class="terminal"><div class="termbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><small>hazim@portfolio: ~</small></div><div class="termcontent"><div><span class="prompt">$</span> <span id="typed" class="cmd"></span><span class="blink">▌</span></div><div id="terminalOutput"></div></div></div></div>
 <section class="reveal"><div class="eyebrow">01 / At a glance</div><h2>Engineering with ownership.</h2><p class="muted">Based in Egypt. Electrical & Electronics Engineering graduate from Menoufia University. Over five years building end-to-end software, spanning user interfaces, APIs, integrations, cloud services and system design.</p><div class="stats"><div class="stat"><strong>5+</strong><small>Years building production software</small></div><div class="stat"><strong>4+</strong><small>Industries I’ve built software for<br><span class="industry-list">Logistics · FinTech · Healthcare · Business Communications</span></small></div><div class="stat"><strong>.NET</strong><small>Backend engineering · APIs · distributed systems</small></div></div></section>
@@ -528,7 +528,7 @@ document.getElementById('resumeDownload').addEventListener('click',async e=>{
  const scroll=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight);
  const angle=motion.matches?.45:.45+scroll*Math.PI*2.3;
  const tilt=motion.matches?-.3:-.3+Math.sin(scroll*Math.PI)*.35;
- const scale=width*.20,cy=height*.48,unit=mobile.matches?13:18;
+ const scale=width*.27,cy=height*.48,unit=mobile.matches?13:18;
  function rotate(v){const [x,y,z]=v;const a=x*Math.cos(angle)+z*Math.sin(angle),b=-x*Math.sin(angle)+z*Math.cos(angle);
  return [a,y*Math.cos(tilt)-b*Math.sin(tilt),y*Math.sin(tilt)+b*Math.cos(tilt)];}
  function project(v){const [x,y,z]=rotate(v),p=5/(5+z);return [width/2+x*scale*p,cy+y*scale*p,z];}
@@ -548,7 +548,7 @@ document.getElementById('resumeDownload').addEventListener('click',async e=>{
  polygons.sort((a,b)=>b.depth-a.depth).forEach(poly=>{
  context.beginPath();poly.points.forEach((p,i)=>i?context.lineTo(p[0],p[1]):context.moveTo(p[0],p[1]));context.closePath();
  context.fillStyle=['#191021','#231333','#100d18','#30104b','#190e26','#0b111b'][poly.f];context.fill();
- context.strokeStyle=poly.f%2?'rgba(0,229,255,.7)':'rgba(154,94,224,.55)';context.lineWidth=.8;context.stroke();
+ context.strokeStyle=poly.f%2?'rgba(0,229,255,.7)':'rgba(154,94,224,.55)';context.lineWidth=mobile.matches?1.6:1.2;context.stroke();
  });
  const state=contact>.6?'CONNECTED':projects>.6?'DISTRIBUTED':experience>.6?'UNDER THE HOOD':'SYSTEM CORE';
  if(state!==lastLabel){label.textContent=state;lastLabel=state;}
