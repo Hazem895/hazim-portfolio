@@ -23,7 +23,7 @@ jobs:
       - name: Assemble the three portfolio versions
         run: |
           mkdir -p public/luxury public/system-core public/play
-          cp index.html *.pdf public/
+          cp index.html mission.html *.pdf public/
           cp luxury/index.html public/luxury/
           cp system-core/index.html public/system-core/
           cp play/index.html public/play/
