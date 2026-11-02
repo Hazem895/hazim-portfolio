@@ -1,7 +1,7 @@
 name: Deploy portfolio themes to GitHub Pages
 on:
   push:
-    branches: [main, luxury, system-core]
+    branches: [main, luxury, system-core, play]
   workflow_dispatch:
 permissions:
   contents: read
@@ -20,12 +20,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Assemble the two portfolio versions
+      - name: Assemble the three portfolio versions
         run: |
-          mkdir -p public/luxury public/system-core
+          mkdir -p public/luxury public/system-core public/play
           cp index.html *.pdf public/
           cp luxury/index.html public/luxury/
           cp system-core/index.html public/system-core/
+          cp play/index.html public/play/
           touch public/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
