@@ -5,7 +5,7 @@ on:
   workflow_run:
     workflows: ["Portfolio theme updated"]
     types: [completed]
-    branches: [luxurious-version, midnight-blue, emerald-green, royal-purple, burgundy-rose, slate-silver, carbon-red, electric-amethyst]
+    branches: [luxurious-version, midnight-blue, emerald-green, royal-purple, burgundy-rose, slate-silver, carbon-red, electric-amethyst, system-core]
   workflow_dispatch:
 permissions:
   contents: read
@@ -57,12 +57,16 @@ jobs:
         with:
           ref: electric-amethyst
           path: source-electric-amethyst
+      - uses: actions/checkout@v4
+        with:
+          ref: system-core
+          path: source-system-core
       - name: Assemble each branch at its own URL
         shell: bash
         run: |
           mkdir -p public
           cp source-main/*.html source-main/*.pdf public/
-          for theme in luxurious-version midnight-blue emerald-green royal-purple burgundy-rose slate-silver carbon-red electric-amethyst; do
+          for theme in luxurious-version midnight-blue emerald-green royal-purple burgundy-rose slate-silver carbon-red electric-amethyst system-core; do
             mkdir -p "public/$theme"
             cp "source-$theme/"*.html "source-$theme/"*.pdf "public/$theme/"
           done
