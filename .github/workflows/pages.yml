@@ -1,7 +1,7 @@
-name: Deploy portfolio to GitHub Pages
+name: Deploy portfolio themes to GitHub Pages
 on:
   push:
-    branches: [main]
+    branches: [main, luxurious-version, midnight-blue, emerald-green, royal-purple, burgundy-rose, slate-silver]
   workflow_dispatch:
 permissions:
   contents: read
@@ -9,7 +9,7 @@ permissions:
   id-token: write
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   deploy:
     environment:
@@ -18,9 +18,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: source-main
+      - uses: actions/checkout@v4
+        with:
+          ref: luxurious-version
+          path: source-luxurious-version
+      - uses: actions/checkout@v4
+        with:
+          ref: midnight-blue
+          path: source-midnight-blue
+      - uses: actions/checkout@v4
+        with:
+          ref: emerald-green
+          path: source-emerald-green
+      - uses: actions/checkout@v4
+        with:
+          ref: royal-purple
+          path: source-royal-purple
+      - uses: actions/checkout@v4
+        with:
+          ref: burgundy-rose
+          path: source-burgundy-rose
+      - uses: actions/checkout@v4
+        with:
+          ref: slate-silver
+          path: source-slate-silver
+      - name: Assemble each branch at its own URL
+        shell: bash
+        run: |
+          mkdir -p public
+          cp source-main/*.html source-main/*.pdf public/
+          for theme in luxurious-version midnight-blue emerald-green royal-purple burgundy-rose slate-silver; do
+            mkdir -p "public/$theme"
+            cp "source-$theme/"*.html "source-$theme/"*.pdf "public/$theme/"
+          done
+          touch public/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: public
       - id: deployment
         uses: actions/deploy-pages@v4
