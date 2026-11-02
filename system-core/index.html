@@ -502,13 +502,17 @@ const commands=[["whoami",["Hazim Attia","Senior Software Engineer"]],["cat focu
 // A quiet, layered starfield; scroll velocity adds brief directional trails.
 const starCanvas=document.getElementById('particles'),starCtx=starCanvas.getContext('2d');
 const starMotion=matchMedia('(prefers-reduced-motion: reduce)');
-let stars=[],starWidth=0,starHeight=0,starFrame=0,starTime=0,starScroll=scrollY,starSpeed=0,starLastScroll=performance.now();
+let stars=[],starWidth=0,starHeight=0,starFrame=0,starTime=0,starScroll=scrollY,starSpeed=0,starTargetScroll=scrollY;
 function resizeStars(){
- starWidth=innerWidth;starHeight=innerHeight;
+ const previousWidth=starWidth,previousHeight=starHeight;
+ const nextWidth=innerWidth,nextHeight=innerHeight;
+ if(nextWidth===starWidth&&Math.abs(nextHeight-starHeight)<100)return;
+ starWidth=nextWidth;starHeight=nextHeight;
  const ratio=Math.min(devicePixelRatio||1,2);
  starCanvas.width=Math.round(starWidth*ratio);starCanvas.height=Math.round(starHeight*ratio);
  starCtx.setTransform(ratio,0,0,ratio,0,0);
- stars=Array.from({length:Math.min(190,Math.max(65,Math.round(starWidth*starHeight/8500)))},()=>({
+ if(stars.length){for(const star of stars){star.x=star.x/previousWidth*starWidth;star.y=star.y/previousHeight*starHeight;}}
+ else stars=Array.from({length:Math.min(150,Math.max(65,Math.round(starWidth*starHeight/10000)))},()=>({
  x:Math.random()*starWidth,y:Math.random()*starHeight,z:.25+Math.random()*.75,phase:Math.random()*Math.PI*2
  }));
  requestStars();
@@ -517,7 +521,11 @@ function drawStars(now){
  starFrame=0;
  if(document.hidden)return;
  const dt=Math.min(.05,Math.max(0,(now-(starTime||now))/1000));starTime=now;
- starSpeed*=Math.exp(-dt*6);
+ // Sample displacement once per animation frame, independent of scroll-event cadence.
+ const scrollStep=starMotion.matches?0:(starTargetScroll-starScroll)*(-Math.expm1(-dt/0.24));
+ starScroll+=scrollStep;
+ const targetSpeed=dt>0?240*Math.tanh((scrollStep/dt)*.22/240):0;
+ starSpeed+=(targetSpeed-starSpeed)*(-Math.expm1(-dt/0.18));
  starCtx.clearRect(0,0,starWidth,starHeight);
  for(const star of stars){
  const motion=starMotion.matches?0:starSpeed*star.z;
@@ -525,9 +533,9 @@ function drawStars(now){
  if(!starMotion.matches){star.x+=1.6*star.z*dt;star.y+=dy;}
  star.x=(star.x+starWidth)%starWidth;star.y=(star.y+starHeight)%starHeight;
  const alpha=.24+star.z*.46+(starMotion.matches?0:Math.sin(now*.00045+star.phase)*.07);
- const trail=starMotion.matches?0:Math.min(28,Math.abs(motion)*.022);
- if(trail>1){
- starCtx.strokeStyle='rgba(176,220,244,'+(alpha*.4)+')';starCtx.lineWidth=.5+star.z*.5;
+ const trail=starMotion.matches?0:Math.min(8,Math.abs(motion)*.025);
+ if(trail>.05){
+ starCtx.strokeStyle='rgba(176,220,244,'+(alpha*.32*Math.min(1,trail/2))+')';starCtx.lineWidth=.5+star.z*.5;
  starCtx.beginPath();starCtx.moveTo(star.x,star.y);starCtx.lineTo(star.x,star.y+Math.sign(motion)*trail);starCtx.stroke();
  }
  starCtx.fillStyle='rgba(220,233,255,'+alpha+')';
@@ -537,13 +545,11 @@ function drawStars(now){
 }
 function requestStars(){if(!starFrame&&!document.hidden)starFrame=requestAnimationFrame(drawStars);}
 addEventListener('scroll',()=>{
- const now=performance.now(),elapsed=Math.max(16,now-starLastScroll),delta=scrollY-starScroll;
- starSpeed=Math.max(-1250,Math.min(1250,starSpeed*.35+delta/elapsed*1000*.65));
- starScroll=scrollY;starLastScroll=now;requestStars();
+ starTargetScroll=scrollY;requestStars();
 },{passive:true});
 addEventListener('resize',resizeStars,{passive:true});
-starMotion.addEventListener('change',()=>{starSpeed=0;starTime=0;requestStars();});
-document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(starFrame);starFrame=0;starTime=0;starSpeed=0;starScroll=scrollY;requestStars();});
+starMotion.addEventListener('change',()=>{starSpeed=0;starTime=0;starScroll=starTargetScroll=scrollY;requestStars();});
+document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(starFrame);starFrame=0;starTime=0;starSpeed=0;starScroll=starTargetScroll=scrollY;requestStars();});
 resizeStars();
 const menuToggle=document.getElementById('menuToggle');const mainNav=document.getElementById('mainNav');menuToggle.addEventListener('click',()=>{const open=mainNav.classList.toggle('nav-open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.textContent=open?'✕':'☰';});mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mainNav.classList.remove('nav-open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰';}));
 document.getElementById('emailBtn').onclick=()=>location.href='mailto:hazemattya007@gmail.com';document.getElementById('whatsappBtn').onclick=()=>window.open('https://wa.me/201067808250','_blank','noopener');document.getElementById('linkedinBtn').onclick=()=>window.open('https://www.linkedin.com/in/hazimattia007','_blank','noopener');
