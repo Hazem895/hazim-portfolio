@@ -569,13 +569,13 @@ document.getElementById('resumeDownload').addEventListener('click',async e=>{
  // Technology identity stays readable while geometry rotates behind it.
  const tech=['Angular','SQL Server','RabbitMQ','Redis','C#','EF Core','Docker','REST API'];
  const center=project([0,0,0]);
- context.save();context.textAlign='center';context.textBaseline='middle';
+ context.save();context.globalAlpha=mobile.matches?.55:.7;context.textAlign='center';context.textBaseline='middle';
  const titleSize=mobile.matches?23:32;
  context.font='800 '+titleSize+'px ui-monospace,monospace';
  const titleWidth=context.measureText('.NET').width+30;
  context.fillStyle='rgba(5,5,12,.88)';context.fillRect(center[0]-titleWidth/2,center[1]-25,titleWidth,50);
  context.shadowColor='#00e5ff';context.shadowBlur=12;context.fillStyle='#bdf8ff';context.fillText('.NET',center[0],center[1]);context.shadowBlur=0;
- const shown=mobile.matches?4:8;
+ const shown=4;
  for(let i=0;i<shown;i++){
   const a=-Math.PI/2+i*Math.PI*2/shown+scroll*.6;
   const radius=scale*(1.02+spread*.18);
@@ -595,6 +595,26 @@ document.getElementById('resumeDownload').addEventListener('click',async e=>{
  context.fillStyle='rgba(173,154,207,.8)';
  const codeY=cy+scale*1.5;
  context.fillText(snippets[Math.min(3,Math.floor(scroll*4))],width/2,Math.min(height-25,codeY));
+ context.restore();
+
+
+ // Fade decoration under actual text lines, including stack labels.
+ context.save();context.globalCompositeOperation='destination-out';
+ context.fillStyle='rgba(0,0,0,.88)';
+ const canvasTop=canvas.getBoundingClientRect().top;
+ document.querySelectorAll('.wrap h1,.wrap h2,.wrap h3,.wrap p,.wrap .eyebrow,.wrap .tag,.wrap strong,.wrap .btn,.wrap .choice,.wrap .muted').forEach(el=>{
+  const bounds=el.getBoundingClientRect();
+  if(bounds.bottom<canvasTop||bounds.top>innerHeight)return;
+  const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
+  let node;while((node=walker.nextNode())){
+   if(!node.textContent.trim())continue;
+   const range=document.createRange();range.selectNodeContents(node);
+   for(const rect of range.getClientRects()){
+    if(rect.width<1||rect.height<1)continue;
+    context.beginPath();context.roundRect(rect.left-5,rect.top-canvasTop-3,rect.width+10,rect.height+6,5);context.fill();
+   }
+  }
+ });
  context.restore();
 
  const state=contact>.6?'CONNECTED':projects>.6?'DISTRIBUTED':experience>.6?'UNDER THE HOOD':'SYSTEM CORE';
