@@ -351,6 +351,7 @@ const narration = {paused:true, ended:false, currentTime:0};
 const cueTimes = [0, resumeCue, exploreCue];
 let speechRun = 0;
 let currentLine = 0;
+let introVoice;
 function chooseEnglishVoice() {
   const voices = speech.getVoices().filter(voice => /^en(?:-|_)/i.test(voice.lang));
   const score = voice => {
@@ -368,7 +369,7 @@ function stopIntroSpeech() {
 }
 function speakIntroLine(run) {
   if (run !== speechRun || !introActive) return;
-  const voice = chooseEnglishVoice();
+  const voice = introVoice;
   const spokenText = introLines[currentLine]
     .replace("Hazim Attia", "Haazem Ah-tee-yah")
     .replace(/\bCV\b/g, "C V");
@@ -411,6 +412,7 @@ introSound.onclick = () => {
     return;
   }
   if (narration.ended) currentLine = 0;
+  introVoice = chooseEnglishVoice();
   narration.paused = narration.ended = false;
   introSound.textContent = 'Stop introduction';
   speakIntroLine(++speechRun);
