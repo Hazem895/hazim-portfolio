@@ -351,6 +351,10 @@ const signShoulder = new THREE.Vector3();
 const signDirection = new THREE.Vector3();
 const signProjection = new THREE.Vector3();
 const signArmRotation = new THREE.Quaternion();
+const signRestRotation = new THREE.Quaternion();
+const signRestEuler = new THREE.Euler();
+let signArmFrameDt = 0;
+let signRestAngle = 0;
 const signInverse = new THREE.Quaternion();
 const armDown = new THREE.Vector3(0,-1,0);
 function pointAtIntroduction() {
@@ -359,7 +363,11 @@ function pointAtIntroduction() {
   pointingFinger.visible = !signArmCanvas.hidden && fingerExtension > .01;
   pointingFinger.scale.y = .044 * fingerExtension;
   pointingFinger.position.y = -.065 - .029 * fingerExtension;
-  if (signArmCanvas.hidden) return;
+  signRestRotation.setFromEuler(signRestEuler.set(0, 0, signRestAngle));
+  if (signArmCanvas.hidden) {
+    if (introActive) arms[0].quaternion.slerp(signRestRotation, 1 - Math.exp(-signArmFrameDt * 9));
+    return;
+  }
   const bounds = canvas.getBoundingClientRect();
   const button = introSound.getBoundingClientRect();
   if (!bounds.width || !bounds.height || !button.width) return;
@@ -378,7 +386,8 @@ function pointAtIntroduction() {
   avatar.getWorldQuaternion(signInverse).invert();
   signDirection.applyQuaternion(signInverse);
   signArmRotation.setFromUnitVectors(armDown, signDirection);
-  arms[0].quaternion.slerp(signArmRotation, signReach);
+  signRestRotation.slerp(signArmRotation, signReach);
+  arms[0].quaternion.slerp(signRestRotation, 1 - Math.exp(-signArmFrameDt * 9));
   drawArmOverSign(bounds);
 }
 const signArmCanvas = document.querySelector('#signArmCanvas');
@@ -729,11 +738,12 @@ function animateIntroPerformance(now, dt) {
   const leftPose = active && cue === 0 ? -.44 : 0;
   const rightPose = active ? [.50, 2.20, .68][cue] : 0;
   const emphasis = speaking ? energy * .26 : 0;
-  arms[0].rotation.z += (leftPose - emphasis - arms[0].rotation.z) * blend;
+  signArmFrameDt = dt;
+  signRestAngle = leftPose - emphasis;
+  if (!introActive) arms[0].rotation.z = 0;
   arms[1].rotation.z += (rightPose + emphasis - arms[1].rotation.z) * blend;
   if (active) {
     arms[1].rotation.x = cue === 2 ? -.39 : -.14;
-    arms[0].rotation.x *= Math.exp(-dt * 12);
   }
   wrists[0].rotation.z = active ? -energy * .18 * (1 - signReach) : 0;
   wrists[1].rotation.z = active ? (cue === 1 ? .24 : -.19) + emphasis : 0;
@@ -749,7 +759,7 @@ function render(now){raf=0;if(document.hidden)return;const dt=Math.min(.04,last?
  if(walking){const desired=Math.atan2(player.vx,player.vy);heading+=Math.atan2(Math.sin(desired-heading),Math.cos(desired-heading))*blend;}
  avatar.position.set(wx(player.x),dropStarted!==null?dropHeight:walking&&!reduce.matches?Math.abs(Math.sin(now*.011))*.055:0,wz(player.y));// The reading camera sees the avatar from the front; keep the walking heading intact.
  avatar.rotation.y=(readOpen||introActive)?orbitYaw:heading;
- for(let i=0;i<2;i++){const swing=walking&&!reduce.matches?Math.sin(now*.011+i*Math.PI)*.55:0;legs[i].rotation.x=swing;arms[i].rotation.x=-swing*.7;}
+ for(let i=0;i<2;i++){const swing=walking&&!reduce.matches?Math.sin(now*.011+i*Math.PI)*.55:0;legs[i].rotation.x=swing;if(!introActive||i!==0)arms[i].rotation.x=-swing*.7;}
  animateIntroPerformance(now, dt);
  if(dropStarted!==null){
    arms[0].rotation.z = parachute.visible ? -2.26 : -1.1;
