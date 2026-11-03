@@ -329,13 +329,55 @@ const stageBlue = new THREE.MeshBasicMaterial({color:'#425d8b'});
 cylinder(stageSet,0,-.09,0,1.08,1.18,.18,stageMetal,32);
 cylinder(stageSet,0,-.17,0,1.13,1.15,.035,stageGold,32);
 cube(stageSet,0,-.25,0,22,.1,22,mat('#181e36'));
-for (const [radius, thickness, color] of [[1.32,.025,stageGold],[1.56,.014,stageBlue],[1.83,.012,stageBlue]]) {
-  const ring = mesh(new THREE.TorusGeometry(radius,thickness,6,48),color,stageSet);
-  ring.position.set(0,1.48,-1.6);
+const introPipeline = new THREE.Group();
+introPipeline.position.z = -1.65;
+stageSet.add(introPipeline);
+const introNodes = [
+  ['API', 'ASP.NET Core', -1.36, 2.12],
+  ['QUEUE', 'RabbitMQ', -1.36, 1.36],
+  ['WORKER', 'Background processing', 1.36, 1.36],
+  ['CLOUD', 'WhatsApp integration', 1.36, 2.12]
+];
+for (const [title, detail, x, y] of introNodes) {
+  const surface = document.createElement('canvas');
+  surface.width = 512;
+  surface.height = 216;
+  const ink = surface.getContext('2d');
+  ink.fillStyle = '#17243b';
+  ink.fillRect(0, 0, 512, 216);
+  ink.strokeStyle = '#b18758';
+  ink.lineWidth = 5;
+  ink.strokeRect(4, 4, 504, 208);
+  ink.fillStyle = '#efbd81';
+  ink.font = 'bold 54px monospace';
+  ink.fillText(title, 28, 88);
+  ink.fillStyle = '#c4d5ec';
+  ink.font = '29px system-ui';
+  ink.fillText(detail, 28, 151, 455);
+  const texture = new THREE.CanvasTexture(surface);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  const card = mesh(new THREE.PlaneGeometry(.93, .40),
+    new THREE.MeshBasicMaterial({map:texture, side:THREE.DoubleSide}), introPipeline);
+  card.position.set(x, y, 0);
 }
-for (const x of [-2.1,2.1]) {
-  cube(stageSet,x,1.45,-1.55,.028,2.4,.035,stageBlue);
-  cube(stageSet,x,2.68,-1.55,.25,.035,.035,stageGold);
+const introMessageRoute = [[-1.36,2.12],[-1.36,1.36],[-1.36,.85],[1.36,.85],[1.36,1.36],[1.36,2.12]]
+  .map(([x,y]) => new THREE.Vector3(x,y,-.025));
+for (let i = 1; i < introMessageRoute.length; i++) {
+  const start = introMessageRoute[i-1], end = introMessageRoute[i];
+  const link = cube(introPipeline, 0, 0, 0, .017, start.distanceTo(end), .018, stageBlue);
+  link.position.copy(start).lerp(end,.5);
+  link.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), end.clone().sub(start).normalize());
+}
+const introMessagePulse = sphere(introPipeline, 0, 0, .025, .038, stageGold);
+function updateIntroPipeline(now) {
+  if (!introActive) return;
+  const compact = innerWidth < 650;
+  introPipeline.scale.setScalar(compact ? .53 : 1);
+  introPipeline.position.y = compact ? 1.36 : 0;
+  const step = reduce.matches ? 1.5 : (now / 1100) % (introMessageRoute.length - 1);
+  const i = Math.floor(step);
+  introMessagePulse.position.copy(introMessageRoute[i]).lerp(introMessageRoute[i+1], step-i);
+  introMessagePulse.position.z = .035;
 }
 introStage.add(avatar);
 let introCue = -1;
@@ -797,7 +839,7 @@ function render(now){raf=0;if(document.hidden)return;const dt=Math.min(.04,last?
  const show=projected.z>-1&&projected.z<1&&Math.abs(projected.x)<.92&&Math.abs(projected.y)<.86&&distance<240&&!readOpen;
  p.button.style.display=show?'':'none';p.button.style.left=(projected.x*.5+.5)*w+'px';p.button.style.top=(-projected.y*.5+.5)*h+'px';}
  const tip=document.querySelector('#interact');tip.hidden=!near||readOpen;if(near){tip.textContent='Explore '+near.name+' ↗';tip.setAttribute('aria-label','Explore '+near.title);}
- places.forEach(p=>{p.board.rotation.y=Math.atan2(camera.position.x-p.board.position.x,camera.position.z-p.board.position.z);});pointAtIntroduction();renderer.render(introActive?introStage:scene,camera);
+ places.forEach(p=>{p.board.rotation.y=Math.atan2(camera.position.x-p.board.position.x,camera.position.z-p.board.position.z);});updateIntroPipeline(now);pointAtIntroduction();renderer.render(introActive?introStage:scene,camera);
  if(dropStarted!==null||introActive||!reduce.matches||keys.size||Math.hypot(joyX,joyY)>.01||speed>.1)requestDraw();
 }
 function requestDraw(){if(!raf&&!document.hidden)raf=requestAnimationFrame(render)}
