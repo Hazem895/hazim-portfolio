@@ -289,7 +289,8 @@ function render(now){raf=0;if(document.hidden)return;const dt=Math.min(.04,last?
  if(!readOpen){player.vx+=(dx*125-player.vx)*blend;player.vy+=(dy*125-player.vy)*blend;const nx=player.x+player.vx*dt,ny=player.y+player.vy*dt;if(canWalk(nx,player.y))player.x=nx;else player.vx=0;if(canWalk(player.x,ny))player.y=ny;else player.vy=0;}
  const speed=Math.hypot(player.vx,player.vy),walking=speed>4&&!readOpen;
  if(walking){const desired=Math.atan2(player.vx,player.vy);heading+=Math.atan2(Math.sin(desired-heading),Math.cos(desired-heading))*blend;}
- avatar.position.set(wx(player.x),walking&&!reduce.matches?Math.abs(Math.sin(now*.011))*.055:0,wz(player.y));avatar.rotation.y=heading;
+ avatar.position.set(wx(player.x),walking&&!reduce.matches?Math.abs(Math.sin(now*.011))*.055:0,wz(player.y));// The reading camera sees the avatar from the front; keep the walking heading intact.
+ avatar.rotation.y=readOpen?orbitYaw:heading;
  for(let i=0;i<2;i++){const swing=walking&&!reduce.matches?Math.sin(now*.011+i*Math.PI)*.55:0;legs[i].rotation.x=swing;arms[i].rotation.x=-swing*.7;}
  avatarMarker.position.set(avatar.position.x,.055,avatar.position.z);
  const target=new THREE.Vector3(avatar.position.x,1.25,avatar.position.z);
