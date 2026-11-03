@@ -312,17 +312,34 @@ const stageSet = new THREE.Group();
 stageSet.position.set(wx(player.x), 0, wz(player.y));
 stageSet.rotation.y = orbitYaw;
 introStage.add(stageSet);
-const stageMetal = mat('#283550');
-const stageGold = new THREE.MeshBasicMaterial({color:'#edb974'});
-const stageBlue = new THREE.MeshBasicMaterial({color:'#425d8b'});
-cylinder(stageSet,0,-.09,0,1.08,1.18,.18,stageMetal,32);
-cylinder(stageSet,0,-.17,0,1.13,1.15,.035,stageGold,32);
-cube(stageSet,0,-.25,0,22,.1,22,mat('#181e36'));
-const wallMaterial = mat('#26333d');
+const wood = mat('#664435');
+const metalOffice = mat('#151b23');
 const pictureFrame = mat('#ad7750');
-cube(stageSet,0,1.8,-3.3,12,4.4,.14,wallMaterial);
-const paintingY = 2.28;
-const paintingZ = -1.85;
+cube(stageSet,0,-.12,0,22,.2,22,wood);
+cube(stageSet,0,1.8,-2.02,12,4.4,.14,mat('#354751'));
+cube(stageSet,-.52,.83,-1.43,2.7,.11,.78,wood);
+for(const x of [-1.76,.71]) cube(stageSet,x,.39,-1.43,.09,.8,.63,metalOffice);
+cube(stageSet,-.85,1.08,-1.47,.09,.39,.1,metalOffice);
+cube(stageSet,-.85,1.5,-1.47,1.44,.83,.07,metalOffice);
+cube(stageSet,-.85,.91,-1.17,.64,.04,.19,metalOffice);
+const editor = document.createElement('canvas');
+editor.width = 640; editor.height = 360;
+const ctxCode = editor.getContext('2d');
+ctxCode.fillStyle = '#101822';
+ctxCode.fillRect(0,0,640,360);
+ctxCode.fillStyle = '#24374a';
+ctxCode.fillRect(0,0,640,48);
+ctxCode.font = '24px monospace';
+['StoryIsland.cs','public async Task ExploreAsync()','{','    var map = await LoadMapAsync();','    await map.OpenPortalAsync();','    await DeployParachuteAsync();','}'].forEach((line,i)=>{
+  ctxCode.fillStyle = ['#fff','#c5adff','#e6c48a','#76e5c3'][i%4];
+  ctxCode.fillText(line,27,i ? 56+i*41 : 32);
+});
+const editorTexture = new THREE.CanvasTexture(editor);
+editorTexture.colorSpace = THREE.SRGBColorSpace;
+const screen = mesh(new THREE.PlaneGeometry(1.36,.75),new THREE.MeshBasicMaterial({map:editorTexture}),stageSet);
+screen.position.set(-.85,1.5,-1.429);
+const paintingY = 2.4;
+const paintingZ = -1.81;
 const painting = document.createElement('canvas');
 painting.width = 960;
 painting.height = 600;
@@ -373,10 +390,28 @@ brush.font='24px Georgia';
 brush.fillText('Explore the island',46,552);
 const paintingTexture = new THREE.CanvasTexture(painting);
 paintingTexture.colorSpace = THREE.SRGBColorSpace;
-cube(stageSet,0,paintingY,paintingZ-.04,2.62,1.68,.12,pictureFrame);
-const picture = mesh(new THREE.PlaneGeometry(2.46,1.54),
+cube(stageSet,.55,paintingY,paintingZ-.04,1.92,1.22,.12,pictureFrame);
+const picture = mesh(new THREE.PlaneGeometry(1.8,1.125),
   new THREE.MeshBasicMaterial({map:paintingTexture,side:THREE.DoubleSide}),stageSet);
-picture.position.set(0,paintingY,paintingZ+.03);
+picture.position.set(.55,paintingY,paintingZ+.03);
+const mapLight = new THREE.PointLight('#91ffde',0,4);
+mapLight.position.set(.55,paintingY,paintingZ+.55);
+stageSet.add(mapLight);
+const mapRipples = Array.from({length:4},()=>mesh(new THREE.RingGeometry(.91,1,64),
+  new THREE.MeshBasicMaterial({color:'#9affec',transparent:true,opacity:0,depthWrite:false,
+    blending:THREE.AdditiveBlending}),stageSet));
+function pulseMap(progress) {
+  const glow = Math.sin(Math.PI * progress);
+  mapLight.intensity = 12 * glow;
+  mapRipples.forEach((ring,i)=>{
+    const phase = (progress * 1.5 + i/4) % 1;
+    const radius = 1.15-phase;
+    ring.visible = progress > 0;
+    ring.position.set(.55,paintingY,paintingZ+.09+(1-phase)*.8);
+    ring.scale.set(radius,radius*.64,1);
+    ring.material.opacity = .62 * glow * Math.sin(Math.PI*phase);
+  });
+}
 const paintingTarget = new THREE.Vector3();
 stageSet.updateMatrixWorld(true);
 picture.getWorldPosition(paintingTarget);
@@ -714,16 +749,18 @@ function finishIslandDrop() {
 function animateIslandDrop(now) {
   if (dropStarted === null) return;
   const t = (now - dropStarted) / 1000;
-  const cut = 1.05;
+  const cut = 1.35;
   dropFade.style.opacity = String(smoothDrop(1 - Math.abs(t - cut) / .32));
   if (t < cut) {
-    portalPull = smoothDrop(t / cut);
+    pulseMap(t / cut);
+    portalPull = smoothDrop(Math.max(0,(t-.15)/(cut-.15)));
     dropHeight = 0;
     return;
   }
   if (introActive) {
     endStoryIntro();
     portalPull = 0;
+    pulseMap(0);
     avatar.scale.setScalar(1.25);
     dropNotice.textContent = 'Approaching Story Island';
     cameraReady = false;
@@ -822,6 +859,7 @@ function render(now){raf=0;if(document.hidden)return;const dt=Math.min(.04,last?
  if (introActive && dropStarted !== null) {
    avatar.position.lerp(paintingTarget, portalPull);
    avatar.scale.setScalar(1.25 * (1 - .96 * portalPull));
+   avatar.position.y += .25 * Math.sin(Math.PI * portalPull);
    avatar.rotation.y += Math.PI * portalPull;
  }
  for(let i=0;i<2;i++){const swing=walking&&!reduce.matches?Math.sin(now*.011+i*Math.PI)*.55:0;legs[i].rotation.x=swing;if(!introActive||i!==0)arms[i].rotation.x=-swing*.7;}
