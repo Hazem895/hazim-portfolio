@@ -284,7 +284,7 @@ function resize(){w=canvas.clientWidth;h=canvas.clientHeight;renderer.setSize(w,
 function approach(p){
  const offsets=[[0,92],[65,70],[-65,70],[80,0],[-80,0],[0,-85]];
  if(Math.hypot(player.x-p.x,player.y-p.y)>115){for(const [dx,dy]of offsets){if(canWalk(p.x+dx,p.y+dy)){player.x=p.x+dx;player.y=p.y+dy;break;}}}
- orbitYaw=Math.atan2(player.x-p.x,player.y-p.y);orbitPitch=.23;heading=orbitYaw+Math.PI;cameraReady=false;
+ orbitYaw=Math.atan2(player.x-p.x,player.y-p.y);orbitPitch=.23;cameraReady=false;
 }
 function inside(x,y){let result=false;for(let i=0,j=island.length-1;i<island.length;j=i++){const a=island[i],b=island[j];if(((a[1]>y)!==(b[1]>y))&&(x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0]))result=!result}return result;}
 function canWalk(x,y){return inside(x,y)&&!places.some(p=>p.type!=='garden'&&Math.abs(x-p.x)<(p.type==='lighthouse'?24:43)&&Math.abs(y-p.y)<(p.type==='lighthouse'?24:38));}
@@ -855,7 +855,7 @@ function render(now){raf=0;if(document.hidden)return;const dt=Math.min(.04,last?
  const speed=Math.hypot(player.vx,player.vy),walking=speed>4&&!readOpen;
  if(walking){const desired=Math.atan2(player.vx,player.vy);heading+=Math.atan2(Math.sin(desired-heading),Math.cos(desired-heading))*blend;}
  avatar.position.set(wx(player.x),dropStarted!==null?dropHeight:walking&&!reduce.matches?Math.abs(Math.sin(now*.011))*.055:0,wz(player.y));// The reading camera sees the avatar from the front; keep the walking heading intact.
- avatar.rotation.y=(readOpen||introActive)?orbitYaw:heading;
+ avatar.rotation.y=introActive?orbitYaw:heading;
  if (introActive && dropStarted !== null) {
    avatar.position.lerp(paintingTarget, portalPull);
    avatar.scale.setScalar(1.25 * (1 - .96 * portalPull));
@@ -882,6 +882,7 @@ function render(now){raf=0;if(document.hidden)return;const dt=Math.min(.04,last?
  for(const hit of hits){const object=hit.object;if(!object.isMesh||Array.isArray(object.material)||cameraOccluders.some(i=>i.material===object.material))continue;if(!object.userData.cameraMaterial){object.material=object.material.clone();object.userData.cameraMaterial=true;}const m=object.material;cameraOccluders.push({material:m,opacity:m.opacity,transparent:m.transparent,depthWrite:m.depthWrite});m.opacity=.12;m.transparent=true;m.depthWrite=false;}
  if(hits.length&&hits[0].distance>1.0)desired.copy(cameraTarget).addScaledVector(direction,Math.max(3.8,hits[0].distance-.25));
  camera.position.copy(desired);camera.lookAt(cameraTarget);camera.updateMatrixWorld(true);
+ if (readOpen) avatar.rotation.y = Math.atan2(camera.position.x - avatar.position.x, camera.position.z - avatar.position.z);
  if(!reduce.matches&&!readOpen){for(let i=0;i<waterPositions.count;i++){const x=waterBase[i*3],z=waterBase[i*3+2];waterPositions.setY(i,Math.sin(x*.24+now*.0005)*Math.cos(z*.22+now*.0003)*.1);}waterPositions.needsUpdate=true;water.geometry.computeVertexNormals();boat.rotation.z=Math.sin(now*.001)*.055;boat.position.y=-1.03+Math.sin(now*.0012)*.06;for(const t of treeCrowns)t.group.rotation.z=Math.sin(now*.00075+t.phase)*.015;beacons.forEach(b=>b.rotation.y=now*.0002);motes.children.forEach((m,i)=>m.position.y=m.userData.baseY+Math.sin(now*.0008+i)*.17);}
  near=places.reduce((best,p)=>Math.hypot(player.x-p.x,player.y-p.y)<78?p:best,null);
  for(const p of places){p.button.classList.toggle('near',p===near);p.ring.material.opacity=p===near?.85:visited.has(p.id)?.6:.22;p.ring.material.color.set(visited.has(p.id)?'#a0d5b0':'#f2c275');
