@@ -343,6 +343,10 @@ let introStarted = false;
 let introIdleTime = 0;
 let signReach = 0;
 let signGestureTime = 0;
+function easeSignMotion(progress) {
+  const t = Math.max(0, Math.min(1, progress));
+  return t ** 3 * (t * (6 * t - 15) + 10);
+}
 const signShoulder = new THREE.Vector3();
 const signDirection = new THREE.Vector3();
 const signProjection = new THREE.Vector3();
@@ -351,7 +355,10 @@ const signInverse = new THREE.Quaternion();
 const armDown = new THREE.Vector3(0,-1,0);
 function pointAtIntroduction() {
   signArmCanvas.hidden = !introActive || signReach < .001;
-  pointingFinger.visible = !signArmCanvas.hidden && signGestureTime > .65;
+  const fingerExtension = easeSignMotion((signGestureTime - .72) / .55) * signReach;
+  pointingFinger.visible = !signArmCanvas.hidden && fingerExtension > .01;
+  pointingFinger.scale.y = .044 * fingerExtension;
+  pointingFinger.position.y = -.065 - .029 * fingerExtension;
   if (signArmCanvas.hidden) return;
   const bounds = canvas.getBoundingClientRect();
   const button = introSound.getBoundingClientRect();
@@ -362,8 +369,7 @@ function pointAtIntroduction() {
   const signTop = introPanel.getBoundingClientRect().top;
   const buttonX = button.left + button.width / 2;
   const buttonY = button.top + button.height / 2;
-  const overEdge = Math.max(0, Math.min(1, (signGestureTime - .65) / .65));
-  const bend = overEdge * overEdge * (3 - 2 * overEdge);
+  const bend = easeSignMotion((signGestureTime - .72) / .78);
   const aboveSign = signTop - 28;
   signProjection.x = ((buttonX - bounds.left) / bounds.width) * 2 - 1;
   signProjection.y = 1 - ((aboveSign + (buttonY - aboveSign) * bend - bounds.top) / bounds.height) * 2;
@@ -695,8 +701,10 @@ function animateIntroPerformance(now, dt) {
   if (introActive) showIntroCue(cue);
   const idleGesture = updateIntroIdle(dt);
   if (idleGesture > 0) signGestureTime = idleGesture;
-  const reachTarget = active && idleGesture > .25 && idleGesture < 3.1 ? 1 : 0;
-  signReach += (reachTarget - signReach) * (active ? 1 - Math.exp(-dt * 6) : 1);
+  const lift = easeSignMotion(idleGesture / .72);
+  const release = easeSignMotion((idleGesture - 2.5) / .9);
+  const reachTarget = active ? lift * (1 - release) : 0;
+  signReach += (reachTarget - signReach) * (active ? 1 - Math.exp(-dt * 12) : 1);
   if (introActive && dropStarted === null) {
     avatar.position.x += Math.sin(orbitYaw) * .34 * signReach;
     avatar.position.z += Math.cos(orbitYaw) * .34 * signReach;
@@ -718,17 +726,16 @@ function animateIntroPerformance(now, dt) {
   headPivot.rotation.x = active ? -.04 + energy * .055 : 0;
   headPivot.rotation.z = active ? Math.sin(t * 1.4) * .043 : 0;
 
-  const leftPose = active && idleGesture > 0 ? (idleGesture < 1.1 ? -2.1 : -.52) : active && cue === 0 ? -.44 : 0;
+  const leftPose = active && cue === 0 ? -.44 : 0;
   const rightPose = active ? [.50, 2.20, .68][cue] : 0;
   const emphasis = speaking ? energy * .26 : 0;
   arms[0].rotation.z += (leftPose - emphasis - arms[0].rotation.z) * blend;
   arms[1].rotation.z += (rightPose + emphasis - arms[1].rotation.z) * blend;
   if (active) {
     arms[1].rotation.x = cue === 2 ? -.39 : -.14;
-    if (idleGesture > 1.1) arms[0].rotation.x = -.45;
+    arms[0].rotation.x *= Math.exp(-dt * 12);
   }
-  wrists[0].rotation.z = active && idleGesture > 0 && idleGesture < 1.1
-    ? Math.sin(idleGesture * 18) * .33 : active ? -energy * .18 : 0;
+  wrists[0].rotation.z = active ? -energy * .18 * (1 - signReach) : 0;
   wrists[1].rotation.z = active ? (cue === 1 ? .24 : -.19) + emphasis : 0;
 }
 function render(now){raf=0;if(document.hidden)return;const dt=Math.min(.04,last?(now-last)/1000:0);last=now;time=now;
