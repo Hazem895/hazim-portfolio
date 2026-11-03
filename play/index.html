@@ -229,8 +229,8 @@ faceDetails.position.y = -1.28;
 headPivot.add(faceDetails);
 const eyes = [], pupils = [], brows = [];
 // Glasses and facial details face the avatar's +Z walking direction.
-oval(faceDetails, 0, 1.285, 0, .205, .220, .177, materials.skin);
-oval(faceDetails, 0, 1.205, .048, .182, .128, .142, beardColor);
+oval(faceDetails, 0, 1.285, 0, .198, .224, .184, materials.skin);
+oval(faceDetails, 0, 1.205, .048, .176, .117, .149, beardColor);
 oval(faceDetails, 0, 1.257, .143, .119, .063, .044, materials.skin);
 oval(faceDetails, 0, 1.276, .177, .039, .047, .044, materials.skin);
 oval(faceDetails, 0, 1.246, .181, .073, .015, .017, beardColor);
@@ -245,17 +245,17 @@ for (const side of [-1, 1]) {
   const brow = oval(faceDetails, side * .081, 1.363, .154, .051, .011, .012, hairColor);
   brow.rotation.z = side * .13;
   brows.push(brow);
-  const x = side * .085;
-  trim([[x-.067,1.344,.184],[x+.060,1.344,.184],[x+.065,1.315,.184],
-        [x+.048,1.286,.184],[x-.052,1.286,.184],[x-.067,1.310,.184]],
+  const x = side * .086;
+  trim([[x-.067,1.344,.184],[x+.064,1.344,.184],[x+.067,1.313,.184],
+        [x+.047,1.283,.184],[x-.049,1.283,.184],[x-.067,1.310,.184]],
        .005, frames, true);
   trim([[side*.148,1.334,.184],[side*.183,1.332,.108],[side*.187,1.316,.007]], .005, frames);
 }
 trim([[-.026,1.329,.184],[0,1.338,.192],[.026,1.329,.184]], .005, frames);
 for (let i = 0; i < 5; i++) {
   const tuft = oval(faceDetails, -.119 + i * .057, 1.477 + Math.sin(i * .55) * .034, .066 - i * .013,
-                    .070, .057, .098, hairColor);
-  tuft.rotation.z = -.49;
+                    .073, .062, .103, hairColor);
+  tuft.rotation.z = -.38;
 }
 
 const speechMouth = oval(faceDetails, 0, 1.214, .189, .049, .008, .014, frames);
@@ -305,7 +305,7 @@ const resumeLink = document.querySelector('header .resume');
 
 const introLines = [
   "Hi, I'm Hazim Attia. Welcome to Story Island!",
-  "Want the quick version? My résumé is right up top.",
+  "Want the quick version? You can download my CV using the button at the top.",
   "Or tap Explore Story Island, and I'll show you what I've built."
 ];
 const resumeCue = 3.545034;
@@ -344,7 +344,9 @@ function stopIntroSpeech() {
 function speakIntroLine(run) {
   if (run !== speechRun || !introActive) return;
   const voice = chooseEnglishVoice();
-  const line = new SpeechSynthesisUtterance(introLines[currentLine]);
+  const spokenName = "Hah-zem Ah-tee-yah";
+  const spokenText = introLines[currentLine].replace("Hazim Attia", spokenName).replace(/\bCV\b/g, "C. V.");
+  const line = new SpeechSynthesisUtterance(spokenText);
   line.lang = voice?.lang || 'en-US';
   if (voice) line.voice = voice;
   line.rate = .93;
