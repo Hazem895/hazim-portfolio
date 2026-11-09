@@ -287,6 +287,7 @@ const avatarMarker=mesh(new THREE.TorusGeometry(.42,.025,5,28),new THREE.MeshBas
 // A few small fireflies provide depth without covering the text.
 const motes=new THREE.Group();scene.add(motes);for(let i=0;i<16;i++){const m=sphere(motes,Math.sin(i*7.4)*12,1+(i%5)*.3,Math.cos(i*3.1)*9,.025,new THREE.MeshBasicMaterial({color:'#f5d292'}));m.userData.baseY=m.position.y;}
 let heading=0,joyX=0,joyY=0,zoom=1;let cameraOccluders=[];
+const facingTarget = new THREE.Object3D();
 function resize(){w=canvas.clientWidth;h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.fov=w<750?66:58;camera.updateProjectionMatrix();requestDraw()}
 function approach(p){
  const offsets=[[0,92],[65,70],[-65,70],[80,0],[-80,0],[0,-85]];
@@ -889,7 +890,13 @@ function render(now){raf=0;if(document.hidden)return;const dt=Math.min(.04,last?
  for(const hit of hits){const object=hit.object;if(!object.isMesh||Array.isArray(object.material)||cameraOccluders.some(i=>i.material===object.material))continue;if(!object.userData.cameraMaterial){object.material=object.material.clone();object.userData.cameraMaterial=true;}const m=object.material;cameraOccluders.push({material:m,opacity:m.opacity,transparent:m.transparent,depthWrite:m.depthWrite});m.opacity=.12;m.transparent=true;m.depthWrite=false;}
  if(hits.length&&hits[0].distance>1.0)desired.copy(cameraTarget).addScaledVector(direction,Math.max(3.8,hits[0].distance-.25));
  camera.position.copy(desired);camera.lookAt(cameraTarget);camera.updateMatrixWorld(true);
- if (readOpen) avatar.rotation.y = Math.atan2(camera.position.x - avatar.position.x, camera.position.z - avatar.position.z);
+ if (readOpen) {
+  // The avatar face is modeled along local +Z. Aim it at the real camera
+  // position and ease the turn so the visitor never sees the character's back.
+  facingTarget.position.copy(avatar.position);
+  facingTarget.lookAt(camera.position.x, avatar.position.y, camera.position.z);
+  avatar.quaternion.slerp(facingTarget.quaternion, 1 - Math.exp(-dt * 14));
+ }
  if(!reduce.matches&&!readOpen){for(let i=0;i<waterPositions.count;i++){const x=waterBase[i*3],z=waterBase[i*3+2];waterPositions.setY(i,Math.sin(x*.24+now*.0005)*Math.cos(z*.22+now*.0003)*.1);}waterPositions.needsUpdate=true;water.geometry.computeVertexNormals();boat.rotation.z=Math.sin(now*.001)*.055;boat.position.y=-1.03+Math.sin(now*.0012)*.06;for(const t of treeCrowns)t.group.rotation.z=Math.sin(now*.00075+t.phase)*.015;beacons.forEach(b=>b.rotation.y=now*.0002);motes.children.forEach((m,i)=>m.position.y=m.userData.baseY+Math.sin(now*.0008+i)*.17);}
  near=places.reduce((best,p)=>Math.hypot(player.x-p.x,player.y-p.y)<78?p:best,null);
  for(const p of places){p.button.classList.toggle('near',p===near);p.ring.material.opacity=p===near?.85:visited.has(p.id)?.6:.22;p.ring.material.color.set(visited.has(p.id)?'#a0d5b0':'#f2c275');
